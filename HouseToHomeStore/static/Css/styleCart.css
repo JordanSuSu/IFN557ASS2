@@ -1,0 +1,575 @@
+.nav-item {
+    font-family: "Courier New", sans-serif;
+    font-weight: 500;
+}
+
+.dropdown-toggle {
+    background-color: #FAD7A0;
+}
+
+.dropdown-divider {
+    border-bottom: 1px solid black;
+}
+
+.dropdown-item {
+    font-family: "Courier New", sans-serif;
+    background-color: #FAF0DD;
+}
+
+.dropdown-item:hover {
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    font-family: "Courier New", sans-serif;
+    border-bottom: 2px solid #D35400;
+    font-weight: 800;
+}
+
+.navbar-Wishlist-LOGO {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-Cart-LOGO {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-brand-LOGO {
+    margin-left: none;
+}
+
+.navbar-Login-LOGO {
+    margin-left: 10px;
+}
+
+.navbar-Login-LOGO>img:hover {
+    color: #ABB2B9 !important;
+    background-color: #ffffff;
+}
+
+.navbar-Cart-LOGO>img:hover {
+    color: #ABB2B9 !important;
+    background-color: #ffffff;
+}
+
+.navbar-Wishlist-LOGO>img:hover {
+    color: #ABB2B9 !important;
+    background-color: #ffffff;
+}
+
+.navbar-brand .text-dark {
+    color: #ABB2B9 !important;
+    border-bottom: 2px solid #D35400;
+    background-color: #f1d2b7;
+}
+
+footer {
+    border-top: 1px solid black;
+
+}
+
+.content-for-footer p {
+    font-family: "Courier New", sans-serif;
+    color: black;
+}
+
+.text-center .p-3 {
+    background-color: #D35400;
+    font-family: "Courier New", sans-serif;
+    color: white;
+    font-weight: bold;
+    border-top: 1px solid black;
+}
+
+.backgroundImageContent {
+    font-family: "Courier New", sans-serif;
+    color: black;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.btn {
+    background-color: white;
+    font-family: 'Courier New', sans-serif;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #FAD7A0;
+    font-weight: bold;
+}
+
+.tagLineToShop .single h6 {
+    font-family: 'Courier New', sans-serif;
+    font-size: 22px;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+h6 {
+    position: relative;
+    margin-bottom: 8px;
+    font-family: 'Courier New', sans-serif;
+}
+
+h10 {
+    position: relative;
+    margin-top: 8px;
+    font-family: 'Courier New', sans-serif;
+}
+
+.jumbotron {
+    background-image: url(../static/Images/BackgroundImg/Background.jpeg);
+    padding-top: 6%;
+    padding-bottom: 2%;
+    margin-bottom: 0px;
+    background-attachment: fixed;
+}
+
+
+.jumbotron::before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.80);
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.mb-5,
+.my-5 {
+    margin-bottom: -2rem !important;
+    font-size: 12px;
+    margin-top: -2rem !important;
+}
+
+.backgroundImageContent {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+}
+
+/************************Cart Section***********************/
+
+.cart-wrap {
+    padding: 40px 0;
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("../static/Images/BackgroundImg/Background.jpeg");
+    border-top: 1px solid black;
+    background-attachment: fixed;
+}
+
+.table-cart table {
+    width: 100%;
+}
+
+.table-cart thead {
+    border-bottom: 3px solid #D35400;
+    margin-bottom: 5px;
+    background-color: #FAD7A0;
+}
+
+.table-cart thead tr th {
+    padding: 8px;
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Courier New', sans-serif;
+}
+
+.table-cart tr td {
+    padding: 40px 0 27px;
+    vertical-align: middle;
+}
+
+.table-cart tr td:nth-child(1) {
+    width: 52%;
+}
+
+.table-cart tr td:nth-child(2) {
+    width: 26%;
+}
+
+.table-cart tr td:nth-child(3) {
+    width: 13.333%;
+}
+
+.table-cart tr td:nth-child(4) {
+    width: 8.667%;
+    text-align: right;
+}
+
+.table-cart tr td .img-product {
+    width: 72px;
+    float: left;
+    margin-left: 12px;
+    margin-right: 31px;
+    line-height: 63px;
+}
+
+.table-cart tr td .img-product img {
+    width: 100%;
+}
+
+.table-cart tr td .name-product {
+    font-size: 13px;
+    color: black;
+    padding: 8px 8px 8px 12px;
+    line-height: 24px;
+    width: 50%;
+    font-family: 'Courier New', sans-serif;
+    background-color: #FAD7A0;
+}
+
+.table-cart tr td .product-content {
+    font-size: 13px;
+    color: black;
+    padding: 8px;
+    line-height: 24px;
+    width: 50%;
+    font-family: 'Courier New', sans-serif;
+    background-color: #FAD7A0;
+}
+
+.table-cart tr td .price {
+    text-align: right;
+    line-height: 64px;
+    margin-right: 40px;
+    margin-left: 20px;
+    color: black;
+    font-size: 17px;
+    font-family: 'Courier New', sans-serif;
+}
+
+.table-cart tr td .quanlity {
+    position: relative;
+}
+
+.total {
+    font-size: 17px;
+    font-weight: 600;
+    color: #116021;
+    font-family: 'Courier New', sans-serif;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.coupon-box {
+    padding: 63px 0 58px;
+    text-align: center;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 0px;
+    background-color: #FAD7A0;
+}
+
+.coupon-box form input {
+    display: inline-block;
+    width: 264px;
+    margin-right: 13px;
+    height: 44px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: solid 1px black;
+    padding: 5px 15px;
+    font-size: 15px;
+    font-family: 'Courier New', sans-serif;
+    margin-right: 0px
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.round-black-btn {
+    border-radius: 5px;
+    background: #D35400;
+    color: #fff;
+    padding: 8px 15px;
+    display: inline-block;
+    transition: all 0.5s ease-in-out 0s;
+    cursor: pointer;
+    font-family: 'Courier New', sans-serif;
+    border: 1px solid #D35400;
+}
+
+.round-black-btn:hover,
+.round-black-btn:focus {
+    background: #116021;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    border: 1px solid #116021;
+}
+
+.cart-totals {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: ghostwhite;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.cart-totals h3 {
+    font-family: 'Courier New', sans-serif;
+    font-size: 16px;
+    color: black;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border-bottom: 3px solid #D35400;
+    background-color: #FAD7A0;
+    padding: 8px 0 13px 8px;
+}
+
+.cart-totals table {
+    width: 100%;
+}
+
+.cart-totals table tr th,
+.cart-totals table tr td {
+    width: 50%;
+    padding: 3px 0;
+    vertical-align: middle;
+    font-family: 'Courier New', sans-serif;
+    color: black;
+}
+
+.cart-totals table tr td:last-child {
+    text-align: right;
+}
+
+.cart-totals table tr td.subtotal {
+    font-size: 20px;
+    color: black;
+    font-family: 'Courier New', sans-serif;
+}
+
+.cart-totals table tr td.free-shipping {
+    font-size: 14px;
+    color: black;
+    font-family: 'Courier New', sans-serif;
+}
+
+.cart-totals table tr.total-row td {
+    padding-top: 25px;
+    font-family: 'Courier New', sans-serif;
+}
+
+.cart-totals table tr td.price-total {
+    font-size: 16px;
+    font-weight: 600;
+    color: #116021;
+    font-family: 'Courier New', sans-serif;
+}
+
+.btn-cart-totals {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.btn-cart-totals .round-black-btn {
+    margin: 10px 0;
+}
+
+/******************************LOGIN***************************/
+body {
+    font-family: 'Courier New', sans-serif;
+}
+
+/* Full-width input fields */
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #D35400;
+    box-sizing: border-box;
+    color: rgb(142, 142, 142);
+    border-radius: 5px;
+}
+
+/* Set a style for all buttons */
+.button-loginClick {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.loginImage:hover {
+    background-color: #ffffff;
+}
+
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    min-height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #D35400;
+    color: white;
+    font-family: 'Courier New', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    font-size: .90rem;
+    border: 1px solid #D35400;
+}
+
+
+.cancelbtn:hover {
+    width: auto;
+    background-color: #116021;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #116021
+}
+
+.loginbtn {
+    min-height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #D35400;
+    color: white;
+    font-family: 'Courier New', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    font-size: .90rem;
+    border: 1px solid #D35400;
+}
+
+
+.loginbtn:hover {
+    width: auto;
+    background-color: #116021;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #116021;
+}
+
+/* Center the image and position the close button */
+
+.container {
+    padding: 16px;
+}
+
+.modal-footer:hover {
+    border-bottom: none;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #D35400;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    /*.cancelbtn {
+        width: 100%;
+    }*/
+}
+
+::placeholder {
+    font-family: 'Courier New', sans-serif;
+    font-size: small;
+}

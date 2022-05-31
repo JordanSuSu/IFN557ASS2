@@ -1,0 +1,481 @@
+.nav-item {
+    font-family: "Courier New", sans-serif;
+    font-weight: 500;
+}
+
+.dropdown-toggle {
+    background-color: #FAD7A0;
+}
+
+.dropdown-divider {
+    border-bottom: 1px solid black;
+}
+
+.dropdown-item {
+    font-family: "Courier New", sans-serif;
+    background-color: #FAF0DD;
+}
+
+.dropdown-item:hover {
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    font-family: "Courier New", sans-serif;
+    border-bottom: 2px solid #D35400;
+    font-weight: 800;
+}
+
+.navbar-Wishlist-LOGO {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-Cart-LOGO {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-brand-LOGO {
+    margin-left: none;
+}
+
+.navbar-Login-LOGO {
+    margin-left: 10px;
+}
+
+.navbar-Login-LOGO>img:hover {
+    color: #ABB2B9 !important;
+    background-color: #ffffff;
+}
+
+.navbar-Cart-LOGO>img:hover {
+    color: #ABB2B9 !important;
+    background-color: #ffffff;
+}
+
+.navbar-Wishlist-LOGO>img:hover {
+    color: #ABB2B9 !important;
+    background-color: #ffffff;
+}
+
+.navbar-brand .text-dark {
+    color: #ABB2B9 !important;
+    border-bottom: 2px solid #D35400;
+    background-color: #f1d2b7;
+}
+
+footer {
+    border-top: 1px solid black;
+
+}
+
+.content-for-footer p {
+    font-family: "Courier New", sans-serif;
+    color: black;
+}
+
+.text-center .p-3 {
+    background-color: #D35400;
+    font-family: "Courier New", sans-serif;
+    color: white;
+    font-weight: bold;
+    border-top: 1px solid black;
+}
+
+.backgroundImageContent {
+    font-family: "Courier New", sans-serif;
+    color: black;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.btn {
+    background-color: white;
+    font-family: 'Courier New', sans-serif;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #FAD7A0;
+    font-weight: bold;
+}
+
+/* card details start  */
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto+Condensed:400,400i,700,700i');
+
+.tagLineToShop .single h6 {
+    font-family: 'Courier New', sans-serif;
+    font-size: 22px;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+h6 {
+    position: relative;
+    margin-bottom: 8px;
+    font-family: 'Courier New', sans-serif;
+}
+
+h10 {
+    position: relative;
+    margin-top: 8px;
+    font-family: 'Courier New', sans-serif;
+}
+
+.jumbotron {
+    background-image: url(../static/Images/BackgroundImg/Background.jpeg);
+    padding-top: 6%;
+    padding-bottom: 2%;
+    margin-bottom: 0px;
+    background-attachment: fixed;
+}
+
+
+.jumbotron::before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.80);
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.mb-5,
+.my-5 {
+    margin-bottom: -2rem !important;
+    font-size: 12px;
+    margin-top: -2rem !important;
+}
+
+.backgroundImageContent {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+}
+
+.tagLine {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    font-size: 19px;
+    font-weight: 600;
+    color: #D35400;
+    background-color: white;
+}
+
+/********************* Shopping Demo-4 **********************/
+
+.fadeThePicture-here {
+    background-image: url(../static/Images/BackgroundImg/BackgroundDim.jpeg);
+    margin: 0px;
+    padding-top: 12px;
+    background-attachment: fixed;
+    background-repeat: repeat;
+}
+
+.product-grid4,
+.product-grid4 .product-image4 {
+    position: relative
+}
+
+.product-grid4 {
+    font-family: "Courier New", sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+    border: 1.3px solid black;
+}
+
+.product-grid4 .product-image4 img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-grid4 .product-content {
+    padding: 9px;
+    background-color: white;
+}
+
+.product-grid4 .title {
+    text-transform: capitalize;
+    color: black;
+    font-weight: 500;
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    font-family: 'Courier New', sans-serif;
+    background-color: #FAD7A0;
+}
+
+.product-grid4 .description {
+    color: black;
+    font-size: 1em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 3px;
+    padding: 0;
+    font-family: 'Courier New', sans-serif;
+    background-color: #FAF0DD;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+}
+
+.product-grid4 .dimensions {
+    text-transform: capitalize;
+    color: black;
+    font-size: 0.9em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 3px;
+    padding: 0;
+    background-color: #FAF0DD;
+    font-family: 'Courier New', sans-serif;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+}
+
+.product-grid4 .material {
+    text-transform: capitalize;
+    color: black;
+    font-size: 0.9em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 3px;
+    padding: 0;
+    background-color: #FAF0DD;
+    font-family: 'Courier New', sans-serif;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+}
+
+.product-grid4 .price {
+    color: #116021;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 2px 5px 0;
+    display: block
+}
+
+
+.product-grid4 .add-to-cart {
+    min-height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #D35400;
+    color: white;
+    font-family: 'Courier New', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    font-size: .90rem;
+}
+
+.product-grid4:hover .add-to-cart {
+    min-height: 40px;
+    border-radius: 5px;
+    background: #FAD7A0;
+    color: black;
+    border: none;
+    font-size: .90rem;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+.product-grid4 .add-to-cart:hover {
+    min-height: 40px;
+    border-radius: 5px;
+    background: #116021;
+    color: white;
+    border: none;
+    font-size: .90rem;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+@media only screen and (max-width:990px) {
+    .product-grid4 {
+        margin-bottom: 30px
+    }
+}
+
+/******************************LOGIN***************************/
+body {
+    font-family: 'Courier New', sans-serif;
+}
+
+/* Full-width input fields */
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #D35400;
+    box-sizing: border-box;
+    color: rgb(142, 142, 142)
+}
+
+/* Set a style for all buttons */
+.button-loginClick {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.loginImage:hover {
+    background-color: #ffffff;
+}
+
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    min-height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #D35400;
+    color: white;
+    font-family: 'Courier New', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    font-size: .90rem;
+    border: 1px solid #D35400;
+}
+
+
+.cancelbtn:hover {
+    width: auto;
+    background-color: #116021;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #116021
+}
+
+.loginbtn {
+    min-height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #D35400;
+    color: white;
+    font-family: 'Courier New', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    font-size: .90rem;
+    border: 1px solid #D35400;
+}
+
+
+.loginbtn:hover {
+    width: auto;
+    background-color: #116021;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #116021;
+}
+
+/* Center the image and position the close button */
+
+.container {
+    padding: 16px;
+}
+
+.modal-footer:hover {
+    border-bottom: none;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #D35400;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}

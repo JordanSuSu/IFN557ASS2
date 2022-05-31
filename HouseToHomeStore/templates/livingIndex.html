@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Page to display products for living room category">
+
+    <!-- Bootstrap Required Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>House To Home - LIVING ROOM PRODUCTS</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" type="text/css" href="../static/Css/styleLiving.css" />
+
+</head>
+
+<body>
+
+    <!-- Contains the heading, navigation and banner image -->
+    <header>
+        <nav class="navbar navbar-light fixed-top navbar-expand-lg"
+            style="background-color: #FAF0DD; border-bottom: 1px solid black; padding:0px;">
+            <div class="container" style="padding: 6px;">
+
+                <!-- eCommerce Website Name and Logo -->
+                <a class="navbar-brand-LOGO" href="#">
+                    <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
+                        alt="HOUSE TO HOME">
+                </a>
+
+                <div class="navbar-brand-LOGO">
+                    <a class="nav-item text-dark nav-link" href="../Html/index.html">HOUSE TO HOME</a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar -->
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <div class="navbar-nav ml-auto">
+
+
+                        <a href="#id02" class="nav-item text-dark nav-link navbar-Login-LOGO" style="margin-left: 0px;">
+                            <button-loginClick onclick="document.getElementById('id02').style.display='block'"
+                                style="width:auto;">
+                                <h>AboutUs</h>
+                            </button-loginClick>
+                        </a>
+
+                        <div class="dropdown">
+                            <a class="nav-item text-dark nav-link dropdown-toggle" data-toggle="dropdown"
+                                id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#"
+                                style="margin-right:10px;">SEARCH Product</a>
+                            <div class="dropdown-menu" aria-labelledby="bookDropdown">
+                                <a class="dropdown-item" href="#">LivingRoom Sofa</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Coffee Table</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Flower Vase</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Ottoman</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Cushions</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Artificial Plant</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Throw Blanket</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <a class="nav-item text-dark nav-link dropdown-toggle" data-toggle="dropdown"
+                                id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
+                                Category</a>
+                            <div class="dropdown-menu" aria-labelledby="bookDropdown">
+                                <a class="dropdown-item" href="../Html/kitchenIndex.html">Kitchen</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../Html/bedRoomIndex.html">Bed Room</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../Html/bathRoomIndex.html">Bath Room</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../Html/livingIndex.html">Living Room</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../Html/outDoorsIndex.html">Outdoors</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../Html/commonOnesIndex.html">Common Ones</a>
+                            </div>
+                        </div>
+
+
+                        <a href="../Html/wishListIndex.html" class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
+                            data-placement="bottom" title="WISH LIST">
+                            <img src="../static/Images/Logos/bag-heart-fill.svg" width="30" height="30" alt="WishList Logo">
+                        </a>
+
+                        <a href="../Html/cartIndex.html" class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
+                            data-placement="bottom" title="SHOPPING CART">
+                            <img src="../static/Images/Logos/cart-fill.svg" alt="Bootstrap" width="30" height="30"
+                                alt="Cart Logo">
+                        </a>
+
+                        <a href="#id01" class="nav-item text-dark nav-link navbar-Login-LOGO"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
+                            data-placement="bottom" title="LOG IN">
+                            <button-loginClick onclick="document.getElementById('id01').style.display='block'"
+                                style="width:auto;">
+                                <img src="../static/Images/Logos/person-circle.svg" class="loginImage" alt="Bootstrap"
+                                    width="30" height="30" alt="Login Logo">
+                            </button-loginClick>
+                        </a>
+
+
+                        <!--ModalPopups for Login and about us-->
+
+                        <!--Login Modal-->
+                        <div id="id01" class="modal">
+
+                            <form class="modal-content animate" style="border: 1px solid black;border-radius: 5px;"
+                                action="/action_page.php" method="post">
+
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                        title="Close Modal">&times;</span>
+                                </div>
+
+                                <div class="container">
+                                    <label for="uname" style="font-weight: 200; margin: 0px;"><b>Username</b></label>
+                                    <input type="text" placeholder="Enter Username" name="uname" required type="text"
+                                        placeholder="Enter Username" name="uname" required=""
+                                        style="background-color: #FAF0DD; border-radius: 5px;color: black;">
+
+                                    <label for="psw" style="font-weight: 200; margin: 0px;"><b>Password</b></label>
+                                    <input type="password" placeholder="Enter Password"
+                                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw"
+                                        required>
+
+                                    <button type="submit" class="loginbtn">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember">
+                                        Remember me
+                                    </label>
+                                </div>
+
+                                <div class="container modalFotter"
+                                    style="background-color:#FAD7A0; border-top: 1px solid black; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                        class="cancelbtn">Cancel</button>
+                                    <span class="psw"><a style="color: black" href="#">FORGOT PASSWORD?</a></span>
+                                </div>
+                            </form>
+                        </div>
+                        <!--End of Login Modal-->
+
+                        <!--AboutUs Modal-->
+                        <div id="id02" class="modal">
+
+                            <div class="container"
+                                style="background-image: Url(../static/Images/BackgroundImg/Background.jpeg); border-radius: 5px; border: 2px solid black; margin: 5% auto 5% auto;">
+                                <p class="text-centre"
+                                    style="background-color: white; color:black; font-weight:500; padding-right: 6px; padding-left: 6px;">
+                                    <b>"HOUSE TO HOME"</b> is the modal website which has been prepared with outmost
+                                    interest and for educational learing.
+                                    It's major focus is provide online services to customers where they can buy
+                                    quality home décor products at a fair price and make their home look
+                                    beautiful and luxurious.
+                                </p>
+
+                                <div class="text-center">
+                                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"
+                                        onclick="document.getElementById('id02').style.display='none'">
+                                        <img src="../static/Images/Logos/x-circle-fill.svg" width="30" height="30"
+                                            class="d-inline-block align-top" alt="Go Back">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End of aboutUs Modal-->
+
+                        <!--end of modals-->
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <!--Jumbotron for Hero Section -->
+        <div class="jumbotron jumbotron-fluid card card-image">
+            <div class="row justify-content-center mt-5 pb-4">
+                <div class="col-md-8">
+                    <div class="py-4 mb-5">
+                        <p class="text-center backgroundImageContent tagLine">For LIVING ROOM we have launched following
+                            PRODUCTS
+                        </p>
+                        <p class="text-center backgroundImageContent">1. LIVING ROOM SOFA</p>
+                        <p class="text-center backgroundImageContent">2. CUSHIONS</p>
+                        <p class="text-center backgroundImageContent">3. COFFEE TABLE</p>
+                        <p class="text-center backgroundImageContent">4. FLOWER VASE</p>
+                        <p class="text-center backgroundImageContent">5. THROW BLANKETS</p>
+                        <p class="text-center backgroundImageContent">6. OTTOMAN</p>
+                        <p class="text-center backgroundImageContent">7. ARTIFICIAL PLANT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jumbotron for Hero Section END -->
+    </header>
+
+    <!-- Contains the main content of the website, divided into sections -->
+    <main>
+
+        <!-- ShopLine -->
+        <div class="text-center"
+            style="background-color: #FAD7A0; border-top: black 1px solid; padding-top: 6px; padding-bottom: 6px;">
+            <h10 style="background-color:#FAD7A0; padding:2px; color:black">Your wait is finally over</h10>
+            <h6 style="font-size:17px; font-weight:600; background-color:#FAD7A0; padding:2px; color:black">DON'T WAIT,
+                SHOP NOW!!!!!!</h6>
+        </div>
+
+        <!--Shop by category cards SECTION - 1  -->
+
+        <div class="container-fluid fadeThePicture-here">
+            <!-- </div> style="background-image: url(Background.jpeg); margin: 0px; padding-top: 12px;"> -->
+            <div class="row justify-content-center">
+                <div class="col-md-3 col-sm-6" style="
+                    padding-top: 10px;
+                    padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/Pillow.png">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">CUSHIONS</h3>
+                            <h3 class="description">Description: Set of 4, Plush Comfortable, grey & yellow shades</h3>
+                            <h3 class="dimensions">dimensions: 40 cm * 40 cm</h3>
+                            <h3 class="material">material: cotton, machine washable</h3>
+                            <div class="price">
+                                $50.40
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 col-sm-6" style="
+                    padding-top: 10px;
+                    padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/Throw_Blanket.jpg">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">TASSELED THROW BLANKET</h3>
+                            <h3 class="description">Description: Set of 4, KNITTED, Common shades as in picture</h3>
+                            <h3 class="dimensions">dimensions: 2 meters * 2 meters</h3>
+                            <h3 class="material">material: Polyester, machine washable</h3>
+                            <div class="price">
+                                $56.00
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 col-sm-6" style="
+                padding-top: 10px;
+                padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/Plant_Artificial.jpg">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">ARTIFICIAL INDOOR PLANT</h3>
+                            <h3 class="description">Description: green, ceramic vase underneath</h3>
+                            <h3 class="dimensions">dimensions: 2 meters, Green</h3>
+                            <h3 class="material">material: resin and plastic</h3>
+                            <div class="price">
+                                $90.40
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 col-sm-6" style="
+                    padding-top: 10px;
+                    padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/ottoman_Jpeg.jpg">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">OTTOMAN</h3>
+                            <h3 class="description">Description: tan color</h3>
+                            <h3 class="dimensions">dimensions: 2 feet hieght, 0.5 meter radius</h3>
+                            <h3 class="material">material: TEDDY BEAR FABRIC</h3>
+                            <div class="price">
+                                $18.50
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Shop by category cards  SECTION - 2 -->
+        <div class="container-fluid fadeThePicture-here">
+            <div class="row justify-content-center">
+                <div class="col-md-3 col-sm-6" style="
+                    padding-top: 10px;
+                    padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/Sofa.jpeg">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">LIVING SOFA</h3>
+                            <h3 class="description">Description: Three seater, with plush pillows for back</h3>
+                            <h3 class="dimensions">dimensions: 2.5 meters * 0.8 meters</h3>
+                            <h3 class="material">material: Velvet fabric with customisable colour option</h3>
+                            <div class="price">
+                                $140.40
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 col-sm-6" style="
+                    padding-top: 10px;
+                    padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/FlowerVase.jpeg">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">TULIP FLOWER VASE</h3>
+                            <h3 class="description">Description: shades of pink, red & yellow</h3>
+                            <h3 class="dimensions">dimensions: vase-1 feet, flowers-30 cms</h3>
+                            <h3 class="material">material: ceramic vase, plastic flowers</h3>
+                            <div class="price">
+                                $28.89
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 col-sm-6" style="
+                padding-top: 10px;
+                padding-bottom: 10px;">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <img class="pic-1" src="../static/Images/Living/Coffee Table.jpeg">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">COFFEE TABLE</h3>
+                            <h3 class="description">Description: dark brown finish, natural wood</h3>
+                            <h3 class="dimensions">dimensions: face radius-0.5 meters</h3>
+                            <h3 class="material">material: Teak wood, durable chocolate poslish</h3>
+                            <div class="price">
+                                $289.40
+                            </div>
+                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of shopping cards *****************************************-->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-dark" style="background-color: #FAF0DD;">
+        <!-- Grid container -->
+        <div class="container p-4 footer">
+
+            <!-- home -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="../Html/index.html" role="button">
+                <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
+                    alt="Home page">
+            </a>
+
+            <!-- Contact -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
+                data-placement="bottom" title="CONTACT US ON NUMBER- 99988866">
+                <img src="../static/Images/Logos/telephone-fill.svg" width="30" height="30" class="d-inline-block align-top"
+                    alt="Contact Us">
+            </a>
+
+            <!-- Facebook -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
+                data-placement="bottom" title="GO TO OUR FACEBOOK">
+                <img src="../static/Images/Logos/facebook.svg" width="30" height="30" class="d-inline-block align-top"
+                    alt="Facebook Link">
+            </a>
+
+            <!-- WhatsApp -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
+                data-placement="bottom" title="WHATS APP US">
+                <img src="../static/Images/Logos/whatsapp.svg" width="30" height="30" class="d-inline-block align-top"
+                    alt="Whats App Link">
+            </a>
+
+        </div>
+        <!-- Grid container -->
+
+        <!-- Section: Text -->
+        <div class="mb-4 content-for-footer">
+            <p style="font-weight: 500;">
+                Please feel free to contact and get help or search for the ABOVE Button-Links for your reference.
+            </p>
+            <p style="font-size: 12px">
+                (This website is solely developed for assessment and educational purposes. There is no intention to hurt
+                or harm organisational feelings)
+            </p>
+        </div>
+        <!-- Section: Text -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            Copyright &copy; 2022
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
