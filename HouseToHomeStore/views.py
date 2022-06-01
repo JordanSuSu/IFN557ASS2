@@ -40,7 +40,7 @@ def bathroomproducts():
 def outdoors():
     outdoorsP = Product.query.filter(Product.category == 'outdoors')
     # todo: correct folder in template________________ add flask and jinja
-    return render_template('kitchenIndex.html', outdoorsP=outdoorsP)
+    return render_template('outDoorsIndex.html', outdoorsP=outdoorsP)
 
 
 @bp.route('/houseToHome/bedroomproducts/')
@@ -118,7 +118,7 @@ def placeOrder():
             order.products.append(product)
             db.session.commit()
             #flash('item already in basket')
-            # return redirect(url_for('main.order'))
+            return redirect(url_for('main.order'))
 
     return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price)
 
@@ -138,9 +138,6 @@ def deletecartproduct():
             return 'Problem deleting item from order'
     return redirect(url_for('main.order'))
 
-
-#!-----------------------WishList methods
-
 # Scrap basket
 @bp.route('/houseToHome/emptycart')
 def deleteorder():
@@ -148,6 +145,71 @@ def deleteorder():
         del session['order_id']
         flash('All items deleted')
     return redirect(url_for('main.index'))  # !-----------------
+
+
+
+#!-----------------------WishList methods
+# Referred to as "Add Product To WishList" by the user
+@bp.route('/houseToHome/wishList', methods=['POST', 'GET'])
+def addProductToWishList():
+    product_id = request.values.get('product_id')
+
+    # retrieve order if there is one
+    if 'order_id' in session.keys():
+        requestByUser = WishList.query.get(session['order_id'])
+        # order will be None if order_id stale
+    else:
+        # there is no order
+        requestByUser = None
+
+    # create new request if needed
+    if requestByUser is None:
+        requestByUser = WishList(wishList_product_title='', wishList_product_description='', wishList_product_image='',
+                                 wishList_product_price='', individual_product_count=0)
+        try:
+            db.session.add(requestByUser)
+            db.session.commit()
+            #!____________???Not table or class object
+            session['order_id'] = requestByUser.wishList_id
+        except:
+            print('failed at add product to wishlist')
+            requestByUser = None
+
+    # are we adding an item?
+    if product_id is not None and requestByUser is not None:
+        product = Product.query.get(product_id)
+        if product not in requestByUser.products:
+            try:
+                requestByUser.products.append(product)
+                db.session.commit()
+            except:
+                return 'There was an issue adding the item to your basket'
+            return redirect(url_for('main.order'))
+        else:
+            product.individual_product_count = product.individual_product_count + 1  # !_________
+            requestByUser.products.append(product)
+            db.session.commit()
+            #flash('item already in basket')
+            return redirect(url_for('main.order'))  # !_____________
+
+    return render_template('wishListIndex.html', requestByUser=requestByUser)
+
+
+# Delete specific WishList items
+@bp.route('/houseToHome/deletewishListproduct', methods=['POST'])
+def deletewishListproduct():
+    id = request.form['id']  # !_______________
+    if 'order_id' in session:
+        requestByUser = WishList.query.get_or_404(session['order_id'])
+        product_to_delete = WishList.query.get(id)
+        try:
+            requestByUser.products.remove(product_to_delete)
+            db.session.commit()
+            return redirect(url_for('main.order'))  # !______
+        except:
+            return 'Problem deleting item from order'
+    return redirect(url_for('main.order'))
+
 
 
 @bp.route('/houseToHome/proceedtocheckout', methods=['POST', 'GET'])
