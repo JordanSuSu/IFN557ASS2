@@ -10,9 +10,9 @@ class Product(db.Model):
     description = db.Column(db.String(500), nullable=False)
     image = db.Column(db.String(60), nullable=False, default='defaultcity.jpg')
     # !_________________increase string chars dimension , material,
-    dimension = db.Column(db.String(60), nullable=False)
-    material = db.Column(db.String(60), nullable=False)
-    category = db.Column(db.String(60), nullable=False)
+    dimension = db.Column(db.String(160), nullable=False)
+    material = db.Column(db.String(160), nullable=False)
+    category = db.Column(db.String(160), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
