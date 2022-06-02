@@ -9,61 +9,81 @@ from . import db
 bp = Blueprint('main', __name__, template_folder='templates')
 
 
+# todo: 1. create databse for models
+# todo: 2. load products from data base to the 6 different products page
+# todo: 3. delete product from cart
+# todo: 4. delete allllll the products from cart
+# todo: 5. delete products from wishlist
+# todo: 6. add products to cart
+# todo: 7. add products to wishList both from products page and cart
+# todo: 8. make login form work in modal if possible
+# todo: 9. check houseToHome Database content
+# todo: 10. delete extra folders in project as of sir ..........comment properly and add details
+# todo: 11. Make final test and prepare vedio
+
+#! COMPLETED TASKS:
+#! 1. displayed routes for products page
+
+
 @bp.route('/houseToHome')
 def index():
-    # todo: correct folder in template________________ add flask and jinja
     return render_template('index.html')
+
+
+@bp.route('/houseToHome/cart/')
+def cart():
+    return render_template('cartIndex.html')
+
+
+@bp.route('/houseToHome/wishlist/')
+def wishlist():
+    return render_template('wishListIndex.html')
 
 
 @bp.route('/houseToHome/kitchenproducts/')
 def kitchenproducts():
-    kitchensP = Product.query.filter(Product.category == 'kitchen')
-    # todo: correct folder in template________________ add flask and jinja
-    return render_template('kitchenIndex.html', kitchensP=kitchensP)
+    #kitchensP = Product.query.filter(Product.category == 'kitchen')
+    # return render_template('kitchenIndex.html', kitchensP=kitchensP)
+    return render_template('kitchenIndex.html')
 
 
 @bp.route('/houseToHome/livingproducts/')
 def livingproducts():
-    livingsP = Product.query.filter(Product.category == 'living')
-    # todo: correct folder in template________________ add flask and jinja
-    return render_template('livingIndex.html', livingsP=livingsP)
+    #livingsP = Product.query.filter(Product.category == 'living')
+    # return render_template('livingIndex.html', livingsP=livingsP)
+    return render_template('livingIndex.html')
 
 
 @bp.route('/houseToHome/bathroomproducts/')
 def bathroomproducts():
-    bathroomsP = Product.query.filter(Product.category == 'bathroom')
-    # todo: correct folder in template________________ add flask and jinja
-    return render_template('bathRoomIndex.html', bathroomsP=bathroomsP)
+    #bathroomsP = Product.query.filter(Product.category == 'bathroom')
+    # return render_template('bathRoomIndex.html', bathroomsP=bathroomsP)
+    return render_template('bathRoomIndex.html')
 
 
 @bp.route('/houseToHome/outdoors/')
 def outdoors():
-    outdoorsP = Product.query.filter(Product.category == 'outdoors')
-    # todo: correct folder in template________________ add flask and jinja
-    return render_template('outDoorsIndex.html', outdoorsP=outdoorsP)
+    #outdoorsP = Product.query.filter(Product.category == 'outdoors')
+    # return render_template('outDoorsIndex.html', outdoorsP=outdoorsP)
+    return render_template('outDoorsIndex.html')
 
 
 @bp.route('/houseToHome/bedroomproducts/')
 def bedroomproducts():
-    bedroomsP = Product.query.filter(Product.category == 'bedroom')
-    # todo: correct folder in template________________ add flask and jinja
-    return render_template('badRoomIndex.html', bedroomsP=bedroomsP)
+    #bedroomsP = Product.query.filter(Product.category == 'bedroom')
+    # return render_template('badRoomIndex.html', bedroomsP=bedroomsP)
+    return render_template('bedRoomIndex.html')
 
 
 @bp.route('/houseToHome/commonproducts/')
 def commonproducts():
-    commonP = Product.query.filter(Product.category == 'commonones')
-    # todo: correct folder in template________________ add flask and jinja
-    return render_template('commonOnesIndex.html', commonP=commonP)
+    #commonP = Product.query.filter(Product.category == 'commonones')
+    # return render_template('commonOnesIndex.html', commonP=commonP)
+    return render_template('commonOnesIndex.html')
 
 
-# !!!!!_________________main Content above
-
-# !!!!!_________________main Content below
-# Referred to as "Basket" to the user
-
-# Referred to as "Basket" to the user
-@bp.route('/houseToHome/cart', methods=['POST', 'GET'])
+# Referred to as "Cart" to the user
+@bp.route('/houseToHome/placeOrder', methods=['POST', 'GET'])
 def placeOrder():
     product_id = request.values.get('product_id')
 
@@ -76,22 +96,18 @@ def placeOrder():
         order = None
 
     # create new order if needed
-    # str = str.format(self.cart_id, self.order_place_status, self.cart_product_title, self.cart_product_description,
-    # self.cart_product_image, self.cart_product_price, self.cart_individual_product_count, self.cart_total_product_price, self.cart_net_total_price, self.shipping_charges
     if order is None:
         order = ShoppingCart(order_place_status=False, cart_product_title='', cart_product_description='', cart_product_image='',
                              cart_product_price='', cart_net_total_price=0, shipping_charges=0, cart_total_product_price=0)
         try:
             db.session.add(order)
             db.session.commit()
-            #!____________???Not table or class object
             session['order_id'] = order.cart_id
         except:
             print('failed at creating a new order')
             order = None
 
     # calcultate totalprice
-    # self.cart_total_product_price, self.cart_net_total_price, self.shipping_charges
     total_product_price = 0
     net_total_price = 0
     shipping_charges = 15.00
@@ -112,13 +128,12 @@ def placeOrder():
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
-            return redirect(url_for('main.order'))
+            return redirect(url_for('main.index'))
         else:
             products.cart_individual_product_count = products.cart_individual_product_count + 1
             order.products.append(product)
             db.session.commit()
-            #flash('item already in basket')
-            return redirect(url_for('main.order'))
+            return redirect(url_for('main.index'))
 
     return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price)
 
@@ -126,17 +141,18 @@ def placeOrder():
 # Delete specific basket items
 @bp.route('/houseToHome/deletecartproduct', methods=['POST'])
 def deletecartproduct():
-    id = request.form['id']  # !_______________
+    id = request.form['id']
     if 'order_id' in session:
         order = ShoppingCart.query.get_or_404(session['order_id'])
         product_to_delete = ShoppingCart.query.get(id)
         try:
             order.products.remove(product_to_delete)
             db.session.commit()
-            return redirect(url_for('main.order'))  # !______
+            return redirect(url_for('main.index'))
         except:
             return 'Problem deleting item from order'
-    return redirect(url_for('main.order'))
+    return redirect(url_for('main.index'))
+
 
 # Scrap basket
 @bp.route('/houseToHome/emptycart')
@@ -144,13 +160,11 @@ def deleteorder():
     if 'order_id' in session:
         del session['order_id']
         flash('All items deleted')
-    return redirect(url_for('main.index'))  # !-----------------
+    return redirect(url_for('main.index'))
 
 
-
-#!-----------------------WishList methods
 # Referred to as "Add Product To WishList" by the user
-@bp.route('/houseToHome/wishList', methods=['POST', 'GET'])
+@bp.route('/houseToHome/addProductToWishList', methods=['POST', 'GET'])
 def addProductToWishList():
     product_id = request.values.get('product_id')
 
@@ -169,7 +183,6 @@ def addProductToWishList():
         try:
             db.session.add(requestByUser)
             db.session.commit()
-            #!____________???Not table or class object
             session['order_id'] = requestByUser.wishList_id
         except:
             print('failed at add product to wishlist')
@@ -184,13 +197,12 @@ def addProductToWishList():
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
-            return redirect(url_for('main.order'))
+            return redirect(url_for('main.index'))
         else:
-            product.individual_product_count = product.individual_product_count + 1  # !_________
+            product.individual_product_count = product.individual_product_count + 1
             requestByUser.products.append(product)
             db.session.commit()
-            #flash('item already in basket')
-            return redirect(url_for('main.order'))  # !_____________
+            return redirect(url_for('main.index'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
 
@@ -198,18 +210,17 @@ def addProductToWishList():
 # Delete specific WishList items
 @bp.route('/houseToHome/deletewishListproduct', methods=['POST'])
 def deletewishListproduct():
-    id = request.form['id']  # !_______________
+    id = request.form['id']
     if 'order_id' in session:
         requestByUser = WishList.query.get_or_404(session['order_id'])
         product_to_delete = WishList.query.get(id)
         try:
             requestByUser.products.remove(product_to_delete)
             db.session.commit()
-            return redirect(url_for('main.order'))  # !______
+            return redirect(url_for('main.index'))
         except:
             return 'Problem deleting item from order'
-    return redirect(url_for('main.order'))
-
+    return redirect(url_for('main.index'))
 
 
 @bp.route('/houseToHome/proceedtocheckout', methods=['POST', 'GET'])
@@ -231,7 +242,7 @@ def proceedtocheckout():
                 del session['order_id']
                 flash(
                     'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
-                return redirect(url_for('main.index'))  # !___________________
+                return redirect(url_for('main.index'))
             except:
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)  # !____________________

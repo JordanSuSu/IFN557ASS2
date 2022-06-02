@@ -9,7 +9,6 @@ class Product(db.Model):
     title = db.Column(db.String(64), unique=True)
     description = db.Column(db.String(500), nullable=False)
     image = db.Column(db.String(60), nullable=False, default='defaultcity.jpg')
-    # !_________________increase string chars dimension , material,
     dimension = db.Column(db.String(160), nullable=False)
     material = db.Column(db.String(160), nullable=False)
     category = db.Column(db.String(160), nullable=False)
@@ -22,7 +21,7 @@ class Product(db.Model):
         return str
 
 
-# !_____________________________________________________
+# ___________________Secondary table connecting products to other tables______________________
 orderdetails = db.Table('orderdetails',
                         db.Column('order_id', db.Integer, db.ForeignKey(
                             'orders.id'), nullable=False),
@@ -53,12 +52,9 @@ class ShoppingCart(db.Model):
     state = db.Column(db.String(132))
     postCode = db.Column(db.String(20))
 
-    # !_________________
-    # !_________________
     unique_product_id = db.Column(db.Integer, db.ForeignKey(
         'product.unique_product_id'))
 
-    # !_________________Products
     products = db.relationship(
         "Product", secondary=orderdetails, backref="shoppingCart")
 
@@ -78,10 +74,10 @@ class WishList(db.Model):
     wishList_product_image = db.Column(db.String(60), nullable=False)
     wishList_product_price = db.Column(db.Float, nullable=False)
     individual_product_count = db.Column(db.Integer, nullable=False)
-    # !_________________
+
     unique_product_id = db.Column(db.Integer, db.ForeignKey(
         'product.unique_product_id'))
-    # !_________________Products
+
     products = db.relationship(
         "Product", secondary=orderdetails, backref="wishList")
 

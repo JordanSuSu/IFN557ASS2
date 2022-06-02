@@ -76,12 +76,13 @@
                             </div>
                         </div>
 
-                        <a href="../Html/wishListIndex.html" class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
                             data-toggle="tooltip" data-placement="bottom" title="WISH LIST">
-                            <img src="../static/Images/Logos/bag-heart-fill.svg" width="30" height="30" alt="WishList Logo">
+                            <img src="../static/Images/Logos/bag-heart-fill.svg" width="30" height="30"
+                                alt="WishList Logo">
                         </a>
 
-                        <a href="../Html/cartIndex.html" class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             data-toggle="tooltip" data-placement="bottom" title="SHOPPING CART">
                             <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30" alt="Cart Logo">
                         </a>
@@ -90,8 +91,8 @@
                             data-placement="bottom" title="LOG IN">
                             <button-loginClick onclick="document.getElementById('id01').style.display='block'"
                                 style="width:auto;">
-                                <img src="../static/Images/Logos/person-circle.svg" class="loginImage" width="30" height="30"
-                                    alt="Login Logo">
+                                <img src="../static/Images/Logos/person-circle.svg" class="loginImage" width="30"
+                                    height="30" alt="Login Logo">
                             </button-loginClick>
                         </a>
 
@@ -152,8 +153,8 @@
                                 <div class="text-center">
                                     <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"
                                         onclick="document.getElementById('id02').style.display='none'">
-                                        <img src="../static/Images/Logos/x-circle-fill.svg" width="30" height="30"
-                                            class="d-inline-block align-top" alt="Go Back">
+                                        <img src="{{ url_for('static',filename='Images/Logos/x-circle-fill.svg') }}"
+                                            width="30" height="30" class="d-inline-block align-top" alt="Go Back">
                                     </a>
                                 </div>
                             </div>
@@ -212,7 +213,7 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href="../Html/index.html" role="button">
+            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
                 <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
                     alt="Home page">
             </a>
@@ -220,8 +221,8 @@
             <!-- Contact -->
             <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
                 data-placement="bottom" title="CONTACT US ON NUMBER- 99988866">
-                <img src="../static/Images/Logos/telephone-fill.svg" width="30" height="30" class="d-inline-block align-top"
-                    alt="Contact Us">
+                <img src="../static/Images/Logos/telephone-fill.svg" width="30" height="30"
+                    class="d-inline-block align-top" alt="Contact Us">
             </a>
 
             <!-- Facebook -->

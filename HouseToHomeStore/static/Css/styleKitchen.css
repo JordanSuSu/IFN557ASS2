@@ -125,7 +125,7 @@ h10 {
 }
 
 .jumbotron {
-    background-image: url(../static/Images/BackgroundImg/Background.jpeg);
+    background-image: url(../Images/BackgroundImg/Background.jpeg);
     padding-top: 6%;
     padding-bottom: 2%;
     margin-bottom: 0px;
@@ -167,7 +167,7 @@ h10 {
 /********************* Shopping Demo-4 **********************/
 
 .fadeThePicture-here {
-    background-image: url(../static/Images/BackgroundImg/BackgroundDim.jpeg);
+    background-image: url(../Images/BackgroundImg/BackgroundDim.jpeg);
     margin: 0px;
     padding-top: 12px;
     background-attachment: fixed;
@@ -478,4 +478,11 @@ span.psw {
         display: block;
         float: none;
     }
+}
+
+.aboutUs {
+    background-image: url(../Images/BackgroundImg/Background.jpeg);
+    border-radius: 5px;
+    border: 2px solid black;
+    margin: 5% auto 5% auto;
 }

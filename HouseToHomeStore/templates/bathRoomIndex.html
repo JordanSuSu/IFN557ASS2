@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" type="text/css" href="../static/Css/styleBathRoom.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Css/styleBathRoom.css') }}" />
 
 </head>
 
@@ -30,12 +30,12 @@
 
                 <!-- eCommerce Website Name and Logo -->
                 <a class="navbar-brand-LOGO" href="#">
-                    <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
-                        alt="HOUSE TO HOME">
+                    <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
+                        class="d-inline-block align-top" alt="HOUSE TO HOME">
                 </a>
 
                 <div class="navbar-brand-LOGO">
-                    <a class="nav-item text-dark nav-link" href="../Html/index.html">HOUSE TO HOME</a>
+                    <a class="nav-item text-dark nav-link" href={{ url_for('main.index')}}>HOUSE TO HOME</a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
@@ -79,32 +79,33 @@
                                 id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
                                 Category</a>
                             <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                                <a class="dropdown-item" href="../Html/kitchenIndex.html">Kitchen</a>
+                                <a class="dropdown-item" href={{ url_for('main.kitchenproducts')}}>Kitchen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../Html/bedRoomIndex.html">Bed Room</a>
+                                <a class="dropdown-item" href={{ url_for('main.bedroomproducts')}}>Bed Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../Html/bathRoomIndex.html">Bath Room</a>
+                                <a class="dropdown-item" href={{ url_for('main.bathroomproducts')}}>Bath Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../Html/livingIndex.html">Living Room</a>
+                                <a class="dropdown-item" href={{ url_for('main.livingproducts')}}>Living Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../Html/outDoorsIndex.html">Outdoors</a>
+                                <a class="dropdown-item" href={{ url_for('main.outdoors')}}>Outdoors</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../Html/commonOnesIndex.html">Common Ones</a>
+                                <a class="dropdown-item" href={{ url_for('main.commonproducts')}}>Common Ones</a>
                             </div>
                         </div>
 
 
-                        <a href="../Html/wishListIndex.html" class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="WISH LIST">
-                            <img src="../static/Images/Logos/bag-heart-fill.svg" width="30" height="30" alt="WishList Logo">
+                            <img src="{{ url_for('static',filename='Images/Logos/bag-heart-fill.svg') }}" width="30"
+                                height="30" alt="WishList Logo">
                         </a>
 
-                        <a href="../Html/cartIndex.html" class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="SHOPPING CART">
-                            <img src="../static/Images/Logos/cart-fill.svg" alt="Bootstrap" width="30" height="30"
-                                alt="Cart Logo">
+                            <img src="{{ url_for('static',filename='Images/Logos/cart-fill.svg') }}" width="30"
+                                height="30" alt="Cart Logo">
                         </a>
 
                         <a href="#id01" class="nav-item text-dark nav-link navbar-Login-LOGO"
@@ -112,8 +113,8 @@
                             data-placement="bottom" title="LOG IN">
                             <button-loginClick onclick="document.getElementById('id01').style.display='block'"
                                 style="width:auto;">
-                                <img src="../static/Images/Logos/person-circle.svg" class="loginImage" alt="Bootstrap"
-                                    width="30" height="30" alt="Login Logo">
+                                <img src="{{ url_for('static',filename='Images/Logos/person-circle.svg') }}"
+                                    class="loginImage" alt="Bootstrap" width="30" height="30" alt="Login Logo">
                             </button-loginClick>
                         </a>
 
@@ -162,8 +163,7 @@
                         <!--AboutUs Modal-->
                         <div id="id02" class="modal">
 
-                            <div class="container"
-                                style="background-image: Url(../static/Images/BackgroundImg/Background.jpeg); border-radius: 5px; border: 2px solid black; margin: 5% auto 5% auto;">
+                            <div class="container aboutUs">
                                 <p class="text-centre"
                                     style="background-color: white; color:black; font-weight:500; padding-right: 6px; padding-left: 6px;">
                                     <b>"HOUSE TO HOME"</b> is the modal website which has been prepared with outmost
@@ -176,8 +176,8 @@
                                 <div class="text-center">
                                     <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"
                                         onclick="document.getElementById('id02').style.display='none'">
-                                        <img src="../static/Images/Logos/x-circle-fill.svg" width="30" height="30"
-                                            class="d-inline-block align-top" alt="Go Back">
+                                        <img src="{{ url_for('static',filename='Images/Logos/x-circle-fill.svg') }}"
+                                            width="30" height="30" class="d-inline-block align-top" alt="Go Back">
                                     </a>
                                 </div>
                             </div>
@@ -377,31 +377,33 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href="../Html/index.html" role="button">
-                <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
-                    alt="Home page">
+            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
+                <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
+                    class="d-inline-block align-top" alt="Home page">
             </a>
+
 
             <!-- Contact -->
             <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
                 data-placement="bottom" title="CONTACT US ON NUMBER- 99988866">
-                <img src="../static/Images/Logos/telephone-fill.svg" width="30" height="30" class="d-inline-block align-top"
-                    alt="Contact Us">
+                <img src="{{ url_for('static',filename='Images/Logos/telephone-fill.svg') }}" width="30" height="30"
+                    class="d-inline-block align-top" alt="Contact Us">
             </a>
 
             <!-- Facebook -->
             <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
                 data-placement="bottom" title="GO TO OUR FACEBOOK">
-                <img src="../static/Images/Logos/facebook.svg" width="30" height="30" class="d-inline-block align-top"
-                    alt="Facebook Link">
+                <img src="{{ url_for('static',filename='Images/Logos/facebook.svg') }}" width="30" height="30"
+                    class="d-inline-block align-top" alt="Facebook Link">
             </a>
 
             <!-- WhatsApp -->
             <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button" data-toggle="tooltip"
                 data-placement="bottom" title="WHATS APP US">
-                <img src="../static/Images/Logos/whatsapp.svg" width="30" height="30" class="d-inline-block align-top"
-                    alt="Whats App Link">
+                <img src="{{ url_for('static',filename='Images/Logos/whatsapp.svg') }}" width="30" height="30"
+                    class="d-inline-block align-top" alt="Whats App Link">
             </a>
+
 
         </div>
         <!-- Grid container -->

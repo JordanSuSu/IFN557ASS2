@@ -122,7 +122,7 @@ h10 {
 }
 
 .jumbotron {
-    background-image: url(../static/Images/BackgroundImg/Background.jpeg);
+    background-image: url(../Images/BackgroundImg/Background.jpeg);
     padding-top: 6%;
     padding-bottom: 2%;
     margin-bottom: 0px;
@@ -157,7 +157,7 @@ h10 {
 .cart-wrap {
     padding: 40px 0;
     font-family: 'Open Sans', sans-serif;
-    background-image: url("../static/Images/BackgroundImg/Background.jpeg");
+    background-image: url("../Images/BackgroundImg/Background.jpeg");
     border-top: 1px solid black;
     background-attachment: fixed;
 }
@@ -572,4 +572,11 @@ span.psw {
 ::placeholder {
     font-family: 'Courier New', sans-serif;
     font-size: small;
+}
+
+.aboutUs {
+    background-image: url(../Images/BackgroundImg/Background.jpeg);
+    border-radius: 5px;
+    border: 2px solid black;
+    margin: 5% auto 5% auto;
 }
