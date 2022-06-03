@@ -8,7 +8,7 @@ class Product(db.Model):
     unique_product_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64), unique=True)
     description = db.Column(db.String(500), nullable=False)
-    image = db.Column(db.String(60), nullable=False, default='defaultcity.jpg')
+    image = db.Column(db.String(60), nullable=False)
     dimension = db.Column(db.String(160), nullable=False)
     material = db.Column(db.String(160), nullable=False)
     category = db.Column(db.String(160), nullable=False)

@@ -36,7 +36,7 @@ continuing.
 
 from flask import Blueprint
 from . import db
-from .models import City, Tour, Order
+from .models import Product, WishList, ShoppingCart
 import datetime
 
 
@@ -45,95 +45,380 @@ bp = Blueprint('admin', __name__, url_prefix='/admin/')
 # function to put some seed data in the database
 @bp.route('/dbseed/')
 def dbseed():
-    city1 = City(name='Sydney', image='sydney.jpg', \
-        description='''The state capital of New South Wales and the most populous city in Australia and Oceania.Located on Australia's east coast, the metropolis surrounds Port Jackson and extends about 70 km (43.5 mi) on its periphery towards the Blue Mountains to the west, Hawkesbury to the north, the Royal National Park to the south and Macarthur to the south-west. Sydney is famous for
-spectacular beaches; beautiful parks; a wealth of diversity; incredibly tasty food; The Harbour; and outdoor experiences''')
-    city2 = City(name='Brisbane', image='brisbane.jpg', \
-        description='''The state capital of and the most populated city in the Australian state of Queensland, and the third most populous city in Australia. Brisbane's metropolitan area has a population of approximately 2.5 million, and the South East Queensland metropolitan region, centred on Brisbane, encompasses a population of more than 3.6 million. It is known as the gateway to the reef and is famous for
-friendly Koalas; dolphin spotting; sand Dunes; being a cosmopolitan city; tremendous beaches within 45 minutes; diversity of eateries; and daily tours to Fraser Island and the Reef''')
-    city3 = City(name='Melbourne', image='melbourne.jpg', \
-        description='''The capital and most populous city of the Australian state of Victoria, and the second most populous city in Australia and Oceania. The city occupies much of the coastline of Port Phillip bay and spreads into the hinterlands towards the Dandenong and Macedon ranges, Mornington Peninsula and Yarra Valley. Melbourne is famous for
-being the world’s most livable city; amazing coffee; being the sports capital of Australia; urban laneways; incredible food; eclectic festivals; and fashion-forward trends''')
-      
+    # Naming rule of unique_product_id: (category_id)+(item number in each category)
+    # category_id: 1->kitchen products,  2->living room products,  3->bath room products
+    #              4->bed room products,  5->common products,  6->outdoors products
+
+
+    # Create data of kitchen products and add them in to DB
+    product_kitchen_1 = Product( unique_product_id = 101,
+                        title = 'CHEF\'S APRON',
+                        description = 'Lemon print, yellow & white',
+                        image = 'Kitchen/Chef\'sApron.png',
+                        dimension = 'Adult',
+                        material = 'Cotton',
+                        category = 'Kitchen',
+                        price = 14.40)
+    product_kitchen_2 = Product( unique_product_id = 102,
+                        title = 'BLUE MELAMINE DINNER SET',
+                        description = 'set of 4 big plates, 4 small plates, 4 bowls',
+                        image = 'cabo-melamine-dinnerware-set-of-4-blue-c.jpeg',
+                        dimension = 'Standard Dishware Size',
+                        material = 'Melamine',
+                        category = 'Kitchen',
+                        price = 150.00)
+    product_kitchen_3 = Product( unique_product_id = 103,
+                        title = 'KITCHEN TOWELS',
+                        description = 'Set of 12, vibrant color prints',
+                        image = 'Kitchen_Towels.jpg',
+                        dimension = '35 Centimeters * 35 Centimeters',
+                        material = 'Textured Cotton',
+                        category = 'Kitchen',
+                        price = 40.00)
+    product_kitchen_4 = Product( unique_product_id = 104,
+                        title = 'SPOON AND FORK SET',
+                        description = 'Matte Gold finish, black handles, set of 3 each',
+                        image = 'Spoon&ForkSet.png',
+                        dimension = 'Standard Adult Spoon Size',
+                        material = 'Steel With Gold Coating',
+                        category = 'Kitchen',
+                        price = 60.00)
+    product_kitchen_5 = Product( unique_product_id = 105,
+                        title = 'OVEN MITTS',
+                        description = 'Spring Floral print',
+                        image = 'OvenMitts2.png',
+                        dimension = 'Standard Size For Adult Hands',
+                        material = 'Thick Cotton',
+                        category = 'Kitchen',
+                        price = 8.00)
+    product_kitchen_6 = Product( unique_product_id = 106,
+                        title = 'TEA TOWELS',
+                        description = 'Fruit print - set of 3',
+                        image = 'TeaTowels.png',
+                        dimension = '30 Centimeters * 30 Centimeters',
+                        material = 'Durable Cotton',
+                        category = 'Kitchen',
+                        price = 18.60)
+    product_kitchen_7 = Product( unique_product_id = 107,
+                        title = 'KITCHEN DOOR HERB POTS',
+                        description = 'Blue color with White hue',
+                        image = 'HerbPotters.jpeg',
+                        dimension = 'Small(Height 20 Cms)',
+                        material = 'Ceramic',
+                        category = 'Kitchen',
+                        price = 24.99)
+    product_kitchen_8 = Product( unique_product_id = 108,
+                        title = 'BLUE SCALLOPED DISH SET',
+                        description = 'Set of 4 each - small plate, large plate, small bowl, large bowl',
+                        image = 'NavyScallopedDishSet16.png',
+                        dimension = 'Standard Dish Ware Size',
+                        material = 'Bone China',
+                        category = 'Kitchen',
+                        price = 544.44)
     try:
-        db.session.add(city1)
-        db.session.add(city2)
-        db.session.add(city3)
+        db.session.add(product_kitchen_1)
+        db.session.add(product_kitchen_2)
+        db.session.add(product_kitchen_3)
+        db.session.add(product_kitchen_4)
+        db.session.add(product_kitchen_5)
+        db.session.add(product_kitchen_6)
+        db.session.add(product_kitchen_7)
+        db.session.add(product_kitchen_8)
         db.session.commit()
     except:
-        return 'There was an issue adding the cities in dbseed function'
+        return 'There was an issue adding the kitchen_products in dbseed function'
 
-    t1 = Tour(city_id=city1.id, image='t_cuddle.jpg', price=59.99,\
-        date=datetime.datetime(2020, 5, 17),\
-        name='Cuddle koalas',\
-        description= 'Lone Pine Koala Sanctuary is the world\'s first and largest koala sanctuary and is home to more than 130 koalas. Hand-feed their kangaroos and wild lorikeets, be entertained by a platypus or - best of all - get cuddly with a beautiful koala. Duration 0900-1400 (5hrs), begins at entrance to Koala Plaza') 
-    t2 = Tour(city_id=city1.id, image='t_hand.jpg', price=100.50,\
-        date=datetime.datetime(2020, 2, 1),\
-        name='Hand-feed kangaroo',\
-        description= 'Get up close and personal with Australia\'s favourite wildlife and tick two items off your bucket list with a trip to Lone Pine Koala Sanctuary. Lone Pine is only 40 minutes from the CBD by bus and you\'ll be cuddling up to koalas and hand-feeding kangaroos in no time. Don\'t forget the selfie! Duration 0900-1300 (4hrs), begins at entrance to Kanga Plaza.')
-    t3 = Tour(city_id=city1.id, image='t_sand.jpg', price=180.50,\
-        date=datetime.datetime(2020, 3, 10),\
-        name='Sand island adventure',\
-        description= 'You don\'t have to travel to the far north to see Australia\'s bustling reef and sea life. Take a short ferry ride from the Port of Brisbane and you\'ll find yourself at Moreton Island, a tropical sand island with crystal-clear coastal water, lakes and incredible snorkelling at the historic Tangalooma Wrecks. You\'ll want your GoPro to take some incredible underwater snaps. Duration 0900-1700 (8hrs), begins at entrance to Transit Centre.')
-    t4 = Tour(city_id=city1.id, image='t_whale.jpg', price=99.99,\
-        date=datetime.datetime(2020, 8, 1),\
-        name='Whale watching',\
-        description= 'From June to November, Whale Watching Tours inc. runs daily cruises for those who want to witness the incredible acrobatics of the southern humpback whale. More than 20,000 whales migrate through every winter. Tickets for the five-hour cruise through Moreton Bay are good value and include guaranteed whale sightings. Duration 1300-1800 (5hrs), begins at entrance to Port Street.')                
-    t5 = Tour(city_id=city2.id, image='t_trek.jpg', price=49.00,\
-        date=datetime.datetime(2020, 4, 20),\
-        name='Trek around the national park',\
-        description= 'Forget the outback and take in the green scene. While most international visitors picture red dirt when they think of Australia, you\'re more likely to find yourself surrounded by lush greenery than outback desert. Take the opportunity to check out local fauna and flora at the national parks, as close as 20 minutes from the CBD. Did we mention our parks have drop-bears? Must bring sunblock. Duration 1000-1300 (3hrs), begins at entrance to Forrest Car Park.')
-    t6 = Tour(city_id=city2.id, image='t_island.jpg', price=250.99,\
-        date=datetime.datetime(2021, 1, 2),\
-        name='Island adventure',\
-        description= 'The world\'s biggest sand island is just a few hours away. Heritage-listed Big Sandy Island has more than 100 freshwater lakes, pristine water and white-sand beaches. There\'s many ways to explore the island but the most fun is by four-wheel-drive. Join a tour such as the Dingos Resort tag-along four-wheel drive tour, where you can drive yourself and make friends along the way. Duration 0600-1600 (11hrs), begins at entrance to Ferry Road.')
-    t7 = Tour(city_id=city2.id, image='t_freshwater.jpg', price=120.00,\
-        date=datetime.datetime(2020, 11, 1),\
-        name='Freshwater swimming holes',\
-        description= 'You can\'t come to Australia without enjoying the abundant inland lakes, falls and swimming holes. There\'s almost too many to choose from. Check out Visit our must-swim spots. Duration 0900-1200 (3hrs), begins at entrance to River Park.')
-    t8 = Tour(city_id=city2.id, image='t_cruise.jpg', price=60.00,\
-        date=datetime.datetime(2020, 4, 1),\
-        name='Cruise our wonderful river',\
-        description= 'Jump on board a CityCat  or ride our private City Cab to explore the city by ferry. CityCats run between the city and various points of interest all the way around to killer bay. Duration 1000-1200 (2hrs), begins at entrance to CBD Ferry Stop.')
-    t9 = Tour(city_id=city3.id, image='t_go.jpg', price=189.99,\
-        date=datetime.datetime(2020, 5, 17),\
-        name='Go chasing waterfalls, waterholes and lakes',\
-        description= 'We\'re all about the aquatic life over here in Oz, and you can be too. Take a short trip into the coast and hinterland to discover an abundance of natural waterfalls, waterholes and lakes. You are going to love the diversity we will show you. Duration 0800-1700 (9hrs), begins at entrance Bush Station.')
-    t10 = Tour(city_id=city3.id, image='t_climb.jpg', price=89.95,\
-        date=datetime.datetime(2020, 6, 19),\
-        name='Climb to the top of the City Bridge',\
-        description= 'Get your own city skyline pic when you climb the City Bridge, right here in the CBD. The City Bridge Adventure Climb is one of only three bridge climbs in the world and shows off spectacular city and river views. Twilight is the best time to climb. Free use of safety equipment. Duration 1800-2100 (3hrs), begins at bottom of CBD Climb Inc Office.')
-    t11 = Tour(city_id=city3.id, image='t_ride.jpg', price=45.99,\
-        date=datetime.datetime(2020, 2, 24),\
-        name='Ride the City Wheel',\
-        description= 'Enjoy city views without the climb in the air-conditioned comfort of the City Wheel. Every city has its vantage point and for ours, this is it! Ride at night to see the city light up. Duration 1800-2100 (3hrs), begins at bottom of CBD Wheel Inc Booth.')
-    t12 = Tour(city_id=city3.id, image='t_sunrise.jpg', price=49.99,\
-        date=datetime.datetime(2020, 10, 10),\
-        name='Sunrise at Mt High-er',\
-        description= 'The official city Lookout at Mt High-er is a heritage-listed site boasting panoramic views of the outer region. This is a definite city bucket list item for locals and travellers alike – and yes, it\'s worth the 4am alarm. Duration 0400-0900 (5hrs), begins at High-er visitor centre.')
-    t13 = Tour(city_id=city3.id, image='t_streets.jpg', price=45.00,\
-        date=datetime.datetime(2020, 7, 7),\
-        name='Streets Beach BBQ',\
-        description= 'Take a dip and enjoy a BBQ a Australia\'s only inner-city man-made beach. Streets Beach at North Bank holds the equivalent of five Olympic swimming pools of water, so there\'s no shortage of space to cool down. Pack your swimmers, bring your friends and don\'t forget to grab an included ice-cream. Duration 1500-1800 (3hrs), begins at Life Guard Central on Streets Beach.')
 
+
+
+    # Create data of living room products and add them in to DB
+    product_livingroom_1 = Product( unique_product_id = 201,
+                        title = 'CUSHIONS',
+                        description = 'Set of 4, Plush Comfortable, grey & yellow shades',
+                        image = 'Pillow.png',
+                        dimension = '40 Cm * 40 Cm',
+                        material = 'Cotton, Machine Washable',
+                        category = 'LivingRoom',
+                        price = 50.40)
+    product_livingroom_2 = Product( unique_product_id = 202,
+                        title = 'TASSELED THROW BLANKET',
+                        description = 'Set of 4, KNITTED, Common shades as in picture',
+                        image = 'Throw_Blanket.jpg',
+                        dimension = '2 Meters * 2 Meters',
+                        material = 'Polyester, Machine Washable',
+                        category = 'LivingRoom',
+                        price = 56.00)
+    product_livingroom_3 = Product( unique_product_id = 203,
+                        title = 'ARTIFICIAL INDOOR PLANT',
+                        description = 'Green, ceramic vase underneath',
+                        image = 'Plant_Artificial.jpg',
+                        dimension = '2 Meters, Green',
+                        material = 'Resin And Plastic',
+                        category = 'LivingRoom',
+                        price = 90.40)
+    product_livingroom_4 = Product( unique_product_id = 204,
+                        title = 'OTTOMAN',
+                        description = 'Tan color',
+                        image = 'ottoman_Jpeg.jpg',
+                        dimension = '2 Feet Hieght, 0.5 Meter Radius',
+                        material = 'TEDDY BEAR FABRIC',
+                        category = 'LivingRoom',
+                        price = 18.50)
+    product_livingroom_5 = Product( unique_product_id = 205,
+                        title = 'LIVING SOFA',
+                        description = 'Three seater, with plush pillows for back',
+                        image = 'Sofa.jpeg',
+                        dimension = '2.5 Meters * 0.8 Meters',
+                        material = 'Velvet Fabric With Customisable Colour Option',
+                        category = 'LivingRoom',
+                        price = 140.40)
+    product_livingroom_6 = Product( unique_product_id = 206,
+                        title = 'TULIP FLOWER VASE',
+                        description = 'Shades of pink, red & yellow',
+                        image = 'FlowerVase.jpeg',
+                        dimension = 'Vase-1 Feet, Flowers-30 Cms',
+                        material = 'Ceramic Vase, Plastic Flowers',
+                        category = 'LivingRoom',
+                        price = 28.89)
+    product_livingroom_7 = Product( unique_product_id = 201,
+                        title = 'COFFEE TABLE',
+                        description = 'Dark brown finish, natural wood',
+                        image = 'Coffee Table.jpeg',
+                        dimension = 'Face Radius-0.5 Meters',
+                        material = 'Teak Wood, Durable Chocolate Poslish',
+                        category = 'LivingRoom',
+                        price = 289.40)
     try:
-        db.session.add(t1)
-        db.session.add(t2)
-        db.session.add(t3)
-        db.session.add(t4)
-        db.session.add(t5)
-        db.session.add(t6)
-        db.session.add(t7)
-        db.session.add(t8)
-        db.session.add(t9)
-        db.session.add(t10)
-        db.session.add(t11)
-        db.session.add(t12)
-        db.session.add(t13)
+        db.session.add(product_livingroom_1)
+        db.session.add(product_livingroom_2)
+        db.session.add(product_livingroom_3)
+        db.session.add(product_livingroom_4)
+        db.session.add(product_livingroom_5)
+        db.session.add(product_livingroom_6)
+        db.session.add(product_livingroom_7)
         db.session.commit()
     except:
-        return 'There was an issue adding a tour in dbseed function'
+        return 'There was an issue adding the livingroom_products in dbseed function'
+    
+
+
+    # Create data of bath room products and add them in to DB
+    product_bathroom_1 = Product( unique_product_id = 301,
+                        title = 'KIDS BATH DUCK',
+                        description = 'Yellow small duck with squeezy noise',
+                        image = 'Bath_Duck.jpeg',
+                        dimension = 'Medium',
+                        material = 'Rubber',
+                        category = 'BathRoom',
+                        price = 10.90)
+    product_bathroom_2 = Product( unique_product_id = 302,
+                        title = 'BATH MAT',
+                        description = 'Orange theme, machine washable',
+                        image = 'Bath_Mats.jpeg',
+                        dimension = '70 Centimeters * 30 Centimeters',
+                        material = 'Cotton Jute + Polyester',
+                        category = 'BathRoom',
+                        price = 26.00)
+    product_bathroom_3 = Product( unique_product_id = 303,
+                        title = 'SIDE NIGHT STAND',
+                        description = 'Set of 7 in vibrant colors',
+                        image = 'body_Towel.jpeg',
+                        dimension = 'Large',
+                        material = 'Cotton With Ruffle Texture',
+                        category = 'BathRoom',
+                        price = 240.40)
+    product_bathroom_4 = Product( unique_product_id = 304,
+                        title = 'SHAMPOO/SOAP/CONDITIONER CONTAINER',
+                        description = 'Set of - 3, Amber glass colored, pump bottles',
+                        image = 'Containers.jpeg',
+                        dimension = 'Standard Size',
+                        material = 'High Quality Glass',
+                        category = 'BathRoom',
+                        price = 80.99)
+    product_bathroom_5 = Product( unique_product_id = 305,
+                        title = 'FACE TOWELS',
+                        description = 'Set of 8, ruffled texture, common vibrant colors',
+                        image = 'face_towels.jpeg',
+                        dimension = '30 Centimeters * 20 Centimeters',
+                        material = 'Thick Cotton Jute Texture',
+                        category = 'BathRoom',
+                        price = 100.40)
+    product_bathroom_6 = Product( unique_product_id = 306,
+                        title = 'HAND TOWELS',
+                        description = 'Set of 2, ruffled texture, Blush Color',
+                        image = 'hand_towel.jpeg',
+                        dimension = '40 Centimeters * 30 Centimeters',
+                        material = 'Thick Cotton Jute Texture',
+                        category = 'BathRoom',
+                        price = 56.40)
+    try:
+        db.session.add(product_bathroom_1)
+        db.session.add(product_bathroom_2)
+        db.session.add(product_bathroom_3)
+        db.session.add(product_bathroom_4)
+        db.session.add(product_bathroom_5)
+        db.session.add(product_bathroom_6)
+        db.session.commit()
+    except:
+        return 'There was an issue adding the bathroom_products in dbseed function'
+
+
+
+    # Create data of bed products and add them in to DB
+    product_bedroom_1 = Product( unique_product_id = 401,
+                        title = 'KING BED',
+                        description = 'Made out of durable teak wood, retan net at the Head & Foot boards',
+                        image = 'bed_King.jpg',
+                        dimension = '198 Centimeter * 208 Centimeters',
+                        material = 'Teak Wood, Dark Cholcolate Polish',
+                        category = 'BedRoom',
+                        price = 1000.90)
+    product_bedroom_2 = Product( unique_product_id = 402,
+                        title = 'FLORAL KING BEDSHEET',
+                        description = 'Orange theme, machine washable',
+                        image = 'BedSheets.jpg',
+                        dimension = '250 Centemeters * 300 Centimeters',
+                        material = 'Polyester, Machine Washable',
+                        category = 'BedRoom',
+                        price = 89.00)
+    product_bedroom_3 = Product( unique_product_id = 403,
+                        title = 'SIDE NIGHT STAND',
+                        description = 'Single drawer, durable, wood, dark finish',
+                        image = 'night_stand.jpeg',
+                        dimension = '(L,B,H)- 41 * 21 * 51 Centimeters',
+                        material = 'Teak Wood',
+                        category = 'BedRoom',
+                        price = 240.40)
+    product_bedroom_4 = Product( unique_product_id = 404,
+                        title = 'QUILT SET OF 7',
+                        description = 'Flamingo print on teal background',
+                        image = 'quilt_set_7.jpeg',
+                        dimension = 'Suitable For KING Size Bed',
+                        material = 'Thick Cotton Fabric',
+                        category = 'BedRoom',
+                        price = 100.99)
+    product_bedroom_5 = Product( unique_product_id = 405,
+                        title = 'BED THROW PILLOW',
+                        description = 'Set of 2, cream colour with multi colored crochet embroidery',
+                        image = 'ThrowPillow.jpg',
+                        dimension = '60 Centimeters * 60 Centimeters',
+                        material = 'Thick Cotton Jute Texture',
+                        category = 'BedRoom',
+                        price = 100.40)
+    try:
+        db.session.add(product_bedroom_1)
+        db.session.add(product_bedroom_2)
+        db.session.add(product_bedroom_3)
+        db.session.add(product_bedroom_4)
+        db.session.add(product_bedroom_5)
+        db.session.commit()
+    except:
+        return 'There was an issue adding the bedroom_products in dbseed function'
+
+
+
+    # Create data of common products and add them in to DB
+    product_common_1 = Product( unique_product_id = 501,
+                        title = 'CURTAINS',
+                        description = 'Large Door light floral curtain set',
+                        image = 'Curtains.jpeg',
+                        dimension = '2.5 M * 50 Cm Door',
+                        material = 'Cotton, Machine Washable',
+                        category = 'Common',
+                        price = 150.40)
+    product_common_2 = Product( unique_product_id = 502,
+                        title = 'CANDEL',
+                        description = '3-Wicked Vanilla Aroma',
+                        image = 'candels.jpg',
+                        dimension = '7 Cm Hieght',
+                        material = 'Plant Based Wax',
+                        category = 'Common',
+                        price = 56.00)
+    product_common_3 = Product( unique_product_id = 503,
+                        title = 'AROMA DIFFUSER',
+                        description = 'Grey',
+                        image = 'Aroma_Diffuser.jpg',
+                        dimension = '15 Cm Height',
+                        material = 'Marble Carved',
+                        category = 'Common',
+                        price = 180.40)
+    product_common_4 = Product( unique_product_id = 504,
+                        title = 'SCONCES',
+                        description = 'General sconces',
+                        image = 'Sconces.jpg',
+                        dimension = 'Variable Sizes - Customisable',
+                        material = 'Matte Metallic Gold, Glass',
+                        category = 'Common',
+                        price = 18.50)
+    product_common_5 = Product( unique_product_id = 505,
+                        title = 'WALLPEPER',
+                        description = 'Floral white background',
+                        image = 'wallpaper.png',
+                        dimension = 'Set Of Single Role For 500 Sq Feet Wall Coverage',
+                        material = 'Semi Permanent Thick Paper Base',
+                        category = 'Common',
+                        price = 670.00)
+    product_common_6 = Product( unique_product_id = 506,
+                        title = 'LAMP',
+                        description = 'Cream Color shade',
+                        image = 'Lamp.jpeg',
+                        dimension = '2 Feet Height',
+                        material = 'Canvas Shade, Jute',
+                        category = 'Common',
+                        price = 128.89)
+    product_common_7 = Product( unique_product_id = 507,
+                        title = 'RUG',
+                        description = 'Tasseled, multi colored, light base',
+                        image = 'Rug.jpg',
+                        dimension = '8 Feet * 6 Feet',
+                        material = 'Ruggable Muterial',
+                        category = 'Common',
+                        price = 899.40)
+    try:
+        db.session.add(product_common_1)
+        db.session.add(product_common_2)
+        db.session.add(product_common_3)
+        db.session.add(product_common_4)
+        db.session.add(product_common_5)
+        db.session.add(product_common_6)
+        db.session.add(product_common_7)
+        db.session.commit()
+    except:
+        return 'There was an issue adding the common_products in dbseed function'
+
+
+
+    # Create data of outdoors products and add them in to DB
+    product_outdoor_1 = Product( unique_product_id = 601,
+                        title = 'FLOWER SEEDS',
+                        description = 'Set of 25, common gardening beautiful flowers, types as in image',
+                        image = 'Flower_seeds.jpeg',
+                        dimension = 'Packet Dimensions-15cm * 10 Cm',
+                        material = 'Natural Original Seeds',
+                        category = 'Outdoor',
+                        price = 125.00)
+    product_outdoors_2 = Product( unique_product_id = 602,
+                        title = 'ARTIFICIAL INDOOR PLANT POTS',
+                        description = 'Set of 5, beige & shades',
+                        image = 'Outside_Pots_Set_of_5.jpeg',
+                        dimension = 'Different Ranging From 30 Cm - 50 Cm',
+                        material = 'Cement, Jute, Ceramic',
+                        category = 'Outdoor',
+                        price = 144.40)
+    product_outdoors_3 = Product( unique_product_id = 603,
+                        title = 'OUTSIDE CLIMATE RESISTANT FURNITURE SET',
+                        description = 'Natural Soft white color, Coffee table, 2 side sofas, main sofa, ottoman, pillows',
+                        image = 'OutDoorFurniture_set.jpeg',
+                        dimension = 'Fit For Porch/Balcony Or Backyard Of 4 Meters * 3.5 Meters',
+                        material = 'Jute, Retan, Bamboo Sheets',
+                        category = 'Outdoor',
+                        price = 500.50)
+    try:
+        db.session.add(product_outdoor_1)
+        db.session.add(product_outdoors_2)
+        db.session.add(product_outdoors_3)
+        db.session.commit()
+    except:
+        return 'There was an issue adding the outdoors_products in dbseed function'
 
     return 'DATA LOADED'
-
-
