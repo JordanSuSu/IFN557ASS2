@@ -216,79 +216,40 @@
         <!--Shop by category cards SECTION - 1  -->
 
         <div class="container-fluid fadeThePicture-here">
-            <!-- </div> style="background-image: url(Background.jpeg); margin: 0px; padding-top: 12px;"> -->
             <div class="row justify-content-center">
-
+                <!-- <div class="card-columns">
+                    {% for product in kitchensP%}
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h4 class="card-title">{{product.title}}</h4>
+                            <p class="card-text">{{product.description}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> -->
+                {% for products in outdoorsP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/OutDoors/Flower seeds.jpeg">
+                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
-                            <h3 class="title">FLOWER SEEDS</h3>
-                            <h3 class="description">Description: Set of 25, common gardening beautiful flowers, types as
-                                in image
-                            </h3>
-                            <h3 class="dimensions">dimensions: packet dimensions-15cm * 10 cm</h3>
-                            <h3 class="material">material: Natural original Seeds</h3>
+                            <h3 class="title">{{products.title}}</h3>
+                            <h3 class="description">Description: {{products.description}}</h3>
+                            <h3 class="dimensions">dimensions: {{products.dimension}}</h3>
+                            <h3 class="material">material: {{products.material}}</h3>
                             <div class="price">
-                                $125.00
+                                ${{products.price}}
                             </div>
                             <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
                             <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
                         </div>
                     </div>
                 </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                padding-top: 10px;
-                padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/OutDoors/Outside Pots Set of 5.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">ARTIFICIAL INDOOR PLANT POTS</h3>
-                            <h3 class="description">Description: set of 5, beige & shades</h3>
-                            <h3 class="dimensions">dimensions: different ranging from 30 cm - 50 cm </h3>
-                            <h3 class="material">material: cement, jute, ceramic</h3>
-                            <div class="price">
-                                $144.40
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/OutDoors/OutDoorFurniture set.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">OUTSIDE CLIMATE RESISTANT FURNITURE SET</h3>
-                            <h3 class="description">Description: natural Soft white color, Coffee table, 2 side sofas,
-                                main sofa,
-                                ottoman, pillows</h3>
-                            <h3 class="dimensions">dimensions: fit for porch/balcony or backyard of 4 meters * 3.5
-                                meters</h3>
-                            <h3 class="material">material: Jute, retan, bamboo sheets</h3>
-                            <div class="price">
-                                $500.50
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <!--End of shopping cards *****************************************-->

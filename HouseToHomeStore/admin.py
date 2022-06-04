@@ -54,7 +54,7 @@ def dbseed():
     product_kitchen_1 = Product( unique_product_id = 101,\
                         title = '''CHEF'S APRON''',\
                         description = 'Lemon print, yellow & white',\
-                        image = 'Kitchen/Chef\'sApron.png',\
+                        image = 'ChefsApron.png',\
                         dimension = 'Adult',\
                         material = 'Cotton',\
                         category = 'Kitchen',\
@@ -281,15 +281,7 @@ def dbseed():
                         material = 'Polyester, Machine Washable',
                         category = 'BedRoom',
                         price = 89.00)
-    product_bedroom_3 = Product( unique_product_id = 403,
-                        title = 'SIDE NIGHT STAND',
-                        description = 'Single drawer, durable, wood, dark finish',
-                        image = 'night_stand.jpeg',
-                        dimension = 'abvc',
-                        material = 'Teak Wood',
-                        category = 'BedRoom',
-                        price = 240.40)
-    product_bedroom_4 = Product( unique_product_id = 404,
+    product_bedroom_3 = Product( unique_product_id = 404,
                         title = 'QUILT SET OF 7',
                         description = 'Flamingo print on teal background',
                         image = 'quilt_set_7.jpeg',
@@ -297,7 +289,7 @@ def dbseed():
                         material = 'Thick Cotton Fabric',
                         category = 'BedRoom',
                         price = 100.99)
-    product_bedroom_5 = Product( unique_product_id = 405,
+    product_bedroom_4 = Product( unique_product_id = 405,
                         title = 'BED THROW PILLOW',
                         description = '''Set of 2, cream colour with multi colored crochet embroidery''',
                         image = 'ThrowPillow.jpg',
@@ -310,7 +302,6 @@ def dbseed():
         db.session.add(product_bedroom_2)
         db.session.add(product_bedroom_3)
         db.session.add(product_bedroom_4)
-        db.session.add(product_bedroom_5)
         db.session.commit()
     except:
         return 'There was an issue adding the bedroom_products in dbseed function'

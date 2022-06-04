@@ -14,6 +14,8 @@ def create_app():
 
     #set the app configuration data 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///houseToHomeDataBase.sqlite'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
 
     #initialize db with flask app
     db.init_app(app)

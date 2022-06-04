@@ -229,8 +229,7 @@
 
         <!--Shop by category cards SECTION - 1  -->
 
-        <div class="container-fluid fadeThePicture-here">
-            <!-- </div> style="background-image: url(Background.jpeg); margin: 0px; padding-top: 12px;"> -->
+        <!-- <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
@@ -321,77 +320,44 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!--Shop by category cards  SECTION - 2 -->
         <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
+                <!-- <div class="card-columns">
+                    {% for product in kitchensP%}
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h4 class="card-title">{{product.title}}</h4>
+                            <p class="card-text">{{product.description}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> -->
+                {% for products in commonP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/CommonOnes/wallpaper.png">
+                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
-                            <h3 class="title">WALLPEPER</h3>
-                            <h3 class="description">Description: Floral white background</h3>
-                            <h3 class="dimensions">set of single role for 500 sq feet wall coverage</h3>
-                            <h3 class="material">material: semi permanent thick paper base</h3>
+                            <h3 class="title">{{products.title}}</h3>
+                            <h3 class="description">Description: {{products.description}}</h3>
+                            <h3 class="dimensions">dimensions: {{products.dimension}}</h3>
+                            <h3 class="material">material: {{products.material}}</h3>
                             <div class="price">
-                                $670
+                                ${{products.price}}
                             </div>
                             <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
                             <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
                         </div>
                     </div>
                 </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/CommonOnes/Lamp.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">LAMP</h3>
-                            <h3 class="description">Description: Cream Color shade</h3>
-                            <h3 class="dimensions">dimensions: 2 feet height</h3>
-                            <h3 class="material">material: canvas shade, jute</h3>
-                            <div class="price">
-                                $128.89
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                padding-top: 10px;
-                padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/CommonOnes/Rug.jpg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">RUG</h3>
-                            <h3 class="description">Description: tasseled, multi colored, light base</h3>
-                            <h3 class="dimensions">dimensions: 8 Feet * 6 Feet</h3>
-                            <h3 class="material">material: ruggable muterial</h3>
-                            <div class="price">
-                                $889.40
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <!--End of shopping cards *****************************************-->

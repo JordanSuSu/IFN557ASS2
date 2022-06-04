@@ -227,8 +227,7 @@
 
         <!--Shop by category cards SECTION - 1  -->
 
-        <div class="container-fluid fadeThePicture-here">
-            <!-- </div> style="background-image: url(Background.jpeg); margin: 0px; padding-top: 12px;"> -->
+        <!-- <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
@@ -319,77 +318,44 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!--Shop by category cards  SECTION - 2 -->
         <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
+                <!-- <div class="card-columns">
+                    {% for product in kitchensP%}
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h4 class="card-title">{{product.title}}</h4>
+                            <p class="card-text">{{product.description}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> -->
+                {% for products in livingsP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/Sofa.jpeg">
+                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
-                            <h3 class="title">LIVING SOFA</h3>
-                            <h3 class="description">Description: Three seater, with plush pillows for back</h3>
-                            <h3 class="dimensions">dimensions: 2.5 meters * 0.8 meters</h3>
-                            <h3 class="material">material: Velvet fabric with customisable colour option</h3>
+                            <h3 class="title">{{products.title}}</h3>
+                            <h3 class="description">Description: {{products.description}}</h3>
+                            <h3 class="dimensions">dimensions: {{products.dimension}}</h3>
+                            <h3 class="material">material: {{products.material}}</h3>
                             <div class="price">
-                                $140.40
+                                ${{products.price}}
                             </div>
                             <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
                             <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
                         </div>
                     </div>
                 </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/FlowerVase.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">TULIP FLOWER VASE</h3>
-                            <h3 class="description">Description: shades of pink, red & yellow</h3>
-                            <h3 class="dimensions">dimensions: vase-1 feet, flowers-30 cms</h3>
-                            <h3 class="material">material: ceramic vase, plastic flowers</h3>
-                            <div class="price">
-                                $28.89
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                padding-top: 10px;
-                padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/Coffee Table.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">COFFEE TABLE</h3>
-                            <h3 class="description">Description: dark brown finish, natural wood</h3>
-                            <h3 class="dimensions">dimensions: face radius-0.5 meters</h3>
-                            <h3 class="material">material: Teak wood, durable chocolate poslish</h3>
-                            <div class="price">
-                                $289.40
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <!--End of shopping cards *****************************************-->

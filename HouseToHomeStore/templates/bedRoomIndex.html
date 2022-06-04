@@ -223,8 +223,7 @@
 
         <!--Shop by category cards SECTION - 1  -->
 
-        <div class="container-fluid fadeThePicture-here">
-            <!-- </div> style="background-image: url(Background.jpeg); margin: 0px; padding-top: 12px;"> -->
+        <!-- <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
@@ -317,34 +316,45 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!--Shop by category cards  SECTION - 2 -->
         <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
+                <!-- <div class="card-columns">
+                    {% for product in kitchensP%}
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h4 class="card-title">{{product.title}}</h4>
+                            <p class="card-text">{{product.description}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> -->
+                {% for products in bedroomsP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/BedRoom/ThrowPillow.jpg">
+                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
-                            <h3 class="title">BED THROW PILLOW</h3>
-                            <h3 class="description">Description: Set of 2, cream colour with multi colored crochet
-                                embroidery</h3>
-                            <h3 class="dimensions">dimensions: 60 centimeters * 60 centimeters</h3>
-                            <h3 class="material">material: Thick cotton jute texture</h3>
+                            <h3 class="title">{{products.title}}</h3>
+                            <h3 class="description">Description: {{products.description}}</h3>
+                            <h3 class="dimensions">dimensions: {{products.dimension}}</h3>
+                            <h3 class="material">material: {{products.material}}</h3>
                             <div class="price">
-                                $100.40
+                                ${{products.price}}
                             </div>
                             <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
                             <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            <!--End of shopping cards *****************************************-->
         </div>
     </main>
 

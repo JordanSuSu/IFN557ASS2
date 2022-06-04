@@ -224,8 +224,8 @@
 
         <!--Shop by category cards SECTION - 1  -->
 
-        <div class="container-fluid fadeThePicture-here">
-            <!-- </div> style="background-image: url(Background.jpeg); margin: 0px; padding-top: 12px;"> -->
+        <!-- <div class="container-fluid fadeThePicture-here">
+            
             <div class="row">
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
@@ -317,100 +317,44 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!--Shop by category cards  SECTION - 2 -->
         <div class="container-fluid fadeThePicture-here">
-            <div class="row">
+            <div class="row justify-content-center">
+                <!-- <div class="card-columns">
+                    {% for product in kitchensP%}
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h4 class="card-title">{{product.title}}</h4>
+                            <p class="card-text">{{product.description}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> -->
+                {% for products in kitchensP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Kitchen/OvenMitts2.png">
+                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
-                            <h3 class="title">OVEN MITTS</h3>
-                            <h3 class="description">Description: Spring Floral print</h3>
-                            <h3 class="dimensions">dimensions: standard size for adult hands</h3>
-                            <h3 class="material">material: thick cotton</h3>
+                            <h3 class="title">{{products.title}}</h3>
+                            <h3 class="description">Description: {{products.description}}</h3>
+                            <h3 class="dimensions">dimensions: {{products.dimension}}</h3>
+                            <h3 class="material">material: {{products.material}}</h3>
                             <div class="price">
-                                $8.00
+                                ${{products.price}}
                             </div>
                             <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
                             <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
                         </div>
                     </div>
                 </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Kitchen/TeaTowels.png">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">TEA TOWELS</h3>
-                            <h3 class="description">Description: Fruit print - set of 3</h3>
-                            <h3 class="dimensions">dimensions: 30 centimeters * 30 centimeters</h3>
-                            <h3 class="material">material: durable cotton</h3>
-                            <div class="price">
-                                $18.60
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                padding-top: 10px;
-                padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Kitchen/HerbPotters.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">KITCHEN DOOR HERB POTS</h3>
-                            <h3 class="description">Description: Blue color with White hue</h3>
-                            <h3 class="dimensions">dimensions: small(height 20 cms)</h3>
-                            <h3 class="material">material: ceramic</h3>
-                            <div class="price">
-                                $24.99
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Kitchen/NavyScallopedDishSet16.png">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">BLUE SCALLOPED DISH SET</h3>
-                            <h3 class="description">Description: set of 4 each - small plate, large plate, small
-                                bowl, large bowl</h3>
-                            <h3 class="dimensions">dimensions: standard dish ware size</h3>
-                            <h3 class="material">material: Bone china</h3>
-                            <div class="price">
-                                $544.44
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <!--End of shopping cards *****************************************-->

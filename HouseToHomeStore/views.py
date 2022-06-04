@@ -1,9 +1,11 @@
+from asyncio.log import logger
 from flask import Blueprint, render_template, url_for, request, session, flash, redirect
 from .models import Product, ShoppingCart, WishList
 from datetime import datetime
 from .forms import ProceedToCheckoutForm
 from .login import LogInForm
 from . import db
+import logging
 
 
 bp = Blueprint('main', __name__, template_folder='templates')
@@ -42,44 +44,40 @@ def wishlist():
 
 @bp.route('/houseToHome/kitchenproducts/')
 def kitchenproducts():
-    #kitchensP = Product.query.filter(Product.category == 'kitchen')
-    # return render_template('kitchenIndex.html', kitchensP=kitchensP)
-    return render_template('kitchenIndex.html')
+    kitchensP = Product.query.filter(Product.category == 'Kitchen')
+    # logging.info(kitchensP)
+    return render_template('kitchenIndex.html', kitchensP=kitchensP)
+    # return render_template('kitchenIndex.html')
 
 
 @bp.route('/houseToHome/livingproducts/')
 def livingproducts():
-    #livingsP = Product.query.filter(Product.category == 'living')
-    # return render_template('livingIndex.html', livingsP=livingsP)
-    return render_template('livingIndex.html')
+    livingsP = Product.query.filter(Product.category == 'LivingRoom')
+    return render_template('livingIndex.html', livingsP=livingsP)
 
 
 @bp.route('/houseToHome/bathroomproducts/')
 def bathroomproducts():
-    #bathroomsP = Product.query.filter(Product.category == 'bathroom')
-    # return render_template('bathRoomIndex.html', bathroomsP=bathroomsP)
-    return render_template('bathRoomIndex.html')
+    bathroomsP = Product.query.filter(Product.category == 'BathRoom')
+    return render_template('bathRoomIndex.html', bathroomsP=bathroomsP)
 
 
 @bp.route('/houseToHome/outdoors/')
 def outdoors():
-    #outdoorsP = Product.query.filter(Product.category == 'outdoors')
-    # return render_template('outDoorsIndex.html', outdoorsP=outdoorsP)
-    return render_template('outDoorsIndex.html')
+    outdoorsP = Product.query.filter(Product.category == 'Outdoor')
+    return render_template('outDoorsIndex.html', outdoorsP=outdoorsP)
 
 
 @bp.route('/houseToHome/bedroomproducts/')
 def bedroomproducts():
-    #bedroomsP = Product.query.filter(Product.category == 'bedroom')
-    # return render_template('badRoomIndex.html', bedroomsP=bedroomsP)
-    return render_template('bedRoomIndex.html')
+    bedroomsP = Product.query.filter(Product.category == 'BedRoom')
+    return render_template('bedRoomIndex.html', bedroomsP=bedroomsP)
 
 
 @bp.route('/houseToHome/commonproducts/')
 def commonproducts():
-    #commonP = Product.query.filter(Product.category == 'commonones')
-    # return render_template('commonOnesIndex.html', commonP=commonP)
-    return render_template('commonOnesIndex.html')
+    commonP = Product.query.filter(Product.category == 'Common')
+    return render_template('commonOnesIndex.html', commonP=commonP)
 
 
 # Referred to as "Cart" to the user
