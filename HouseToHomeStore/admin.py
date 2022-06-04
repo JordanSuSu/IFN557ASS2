@@ -51,13 +51,13 @@ def dbseed():
 
 
     # Create data of kitchen products and add them in to DB
-    product_kitchen_1 = Product( unique_product_id = 101,
-                        title = 'CHEF\'S APRON',
-                        description = 'Lemon print, yellow & white',
-                        image = 'Kitchen/Chef\'sApron.png',
-                        dimension = 'Adult',
-                        material = 'Cotton',
-                        category = 'Kitchen',
+    product_kitchen_1 = Product( unique_product_id = 101,\
+                        title = '''CHEF'S APRON''',\
+                        description = 'Lemon print, yellow & white',\
+                        image = 'Kitchen/Chef\'sApron.png',\
+                        dimension = 'Adult',\
+                        material = 'Cotton',\
+                        category = 'Kitchen',\
                         price = 14.40)
     product_kitchen_2 = Product( unique_product_id = 102,
                         title = 'BLUE MELAMINE DINNER SET',
@@ -132,13 +132,13 @@ def dbseed():
 
 
     # Create data of living room products and add them in to DB
-    product_livingroom_1 = Product( unique_product_id = 201,
-                        title = 'CUSHIONS',
-                        description = 'Set of 4, Plush Comfortable, grey & yellow shades',
-                        image = 'Pillow.png',
-                        dimension = '40 Cm * 40 Cm',
-                        material = 'Cotton, Machine Washable',
-                        category = 'LivingRoom',
+    product_livingroom_1 = Product( unique_product_id = 201,\
+                        title = 'CUSHIONS',\
+                        description = 'Set of 4, Plush Comfortable, grey & yellow shades',\
+                        image = 'Pillow.png',\
+                        dimension = '40 Cm * 40 Cm',\
+                        material = 'Cotton, Machine Washable',\
+                        category = 'LivingRoom',\
                         price = 50.40)
     product_livingroom_2 = Product( unique_product_id = 202,
                         title = 'TASSELED THROW BLANKET',
@@ -180,7 +180,7 @@ def dbseed():
                         material = 'Ceramic Vase, Plastic Flowers',
                         category = 'LivingRoom',
                         price = 28.89)
-    product_livingroom_7 = Product( unique_product_id = 201,
+    product_livingroom_7 = Product( unique_product_id = 207,
                         title = 'COFFEE TABLE',
                         description = 'Dark brown finish, natural wood',
                         image = 'Coffee Table.jpeg',
@@ -267,7 +267,7 @@ def dbseed():
     # Create data of bed products and add them in to DB
     product_bedroom_1 = Product( unique_product_id = 401,
                         title = 'KING BED',
-                        description = 'Made out of durable teak wood, retan net at the Head & Foot boards',
+                        description = '''Made out of durable teak wood, retan net at the Head & Foot boards''',
                         image = 'bed_King.jpg',
                         dimension = '198 Centimeter * 208 Centimeters',
                         material = 'Teak Wood, Dark Cholcolate Polish',
@@ -275,7 +275,7 @@ def dbseed():
                         price = 1000.90)
     product_bedroom_2 = Product( unique_product_id = 402,
                         title = 'FLORAL KING BEDSHEET',
-                        description = 'Orange theme, machine washable',
+                        description = '''Orange theme, machine washable''',
                         image = 'BedSheets.jpg',
                         dimension = '250 Centemeters * 300 Centimeters',
                         material = 'Polyester, Machine Washable',
@@ -285,7 +285,7 @@ def dbseed():
                         title = 'SIDE NIGHT STAND',
                         description = 'Single drawer, durable, wood, dark finish',
                         image = 'night_stand.jpeg',
-                        dimension = '(L,B,H)- 41 * 21 * 51 Centimeters',
+                        dimension = 'abvc',
                         material = 'Teak Wood',
                         category = 'BedRoom',
                         price = 240.40)
@@ -299,7 +299,7 @@ def dbseed():
                         price = 100.99)
     product_bedroom_5 = Product( unique_product_id = 405,
                         title = 'BED THROW PILLOW',
-                        description = 'Set of 2, cream colour with multi colored crochet embroidery',
+                        description = '''Set of 2, cream colour with multi colored crochet embroidery''',
                         image = 'ThrowPillow.jpg',
                         dimension = '60 Centimeters * 60 Centimeters',
                         material = 'Thick Cotton Jute Texture',
@@ -314,7 +314,6 @@ def dbseed():
         db.session.commit()
     except:
         return 'There was an issue adding the bedroom_products in dbseed function'
-
 
 
     # Create data of common products and add them in to DB

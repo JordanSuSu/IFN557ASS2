@@ -22,12 +22,12 @@ class Product(db.Model):
 
 
 # ___________________Secondary table connecting products to other tables______________________
-orderdetails = db.Table('orderdetails',
-                        db.Column('order_id', db.Integer, db.ForeignKey(
-                            'orders.id'), nullable=False),
-                        db.Column('product_id', db.Integer, db.ForeignKey(
-                            'product.unique_product_id'), nullable=False),
-                        db.PrimaryKeyConstraint('order_id', 'product_id'))
+# orderdetails = db.Table('orderdetails',
+#                         db.Column('order_id', db.Integer, db.ForeignKey(
+#                             'orders.id'), nullable=False),
+#                         db.Column('product_id', db.Integer, db.ForeignKey(
+#                             'product.unique_product_id'), nullable=False),
+#                         db.PrimaryKeyConstraint('order_id', 'product_id'))
 
 
 # ___________________ShoppingCart Class______________________
@@ -55,8 +55,8 @@ class ShoppingCart(db.Model):
     unique_product_id = db.Column(db.Integer, db.ForeignKey(
         'product.unique_product_id'))
 
-    products = db.relationship(
-        "Product", secondary=orderdetails, backref="shoppingCart")
+    # products = db.relationship(
+    #     "Product", secondary=orderdetails, backref="shoppingCart")
 
     def __repr__(self):
         str = "Cart ID : {}, is Order Placed From this cart {}, Cart Product Title : {}, Cart Product Description : {}, Cart Product Image : {}, Cart Product Price : {}, Cart Individual Product Count : {}, Total Product Price : {}, Net Total Price : {}, Product Shipping Charges : {}, Buyer FullName: {}, ShippingHome Address: {}, State: {}, City: {}, postcode: {}\n"
@@ -78,8 +78,8 @@ class WishList(db.Model):
     unique_product_id = db.Column(db.Integer, db.ForeignKey(
         'product.unique_product_id'))
 
-    products = db.relationship(
-        "Product", secondary=orderdetails, backref="wishList")
+    # products = db.relationship(
+    #     "Product", secondary=orderdetails, backref="wishList")
 
     def __repr__(self):
         str = "WishList ID : {}, WishList Product Title : {}, WishList Product Description : {}, WishList Product Image : {}, WishList Product Price : {}, WishList Product Count : {} \n"
