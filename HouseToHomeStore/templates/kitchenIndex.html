@@ -339,7 +339,8 @@
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
+                            <img class="pic-1"
+                                src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
                             <h3 class="title">{{products.title}}</h3>
@@ -349,7 +350,13 @@
                             <div class="price">
                                 ${{products.price}}
                             </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
+
+                            <form action={{ url_for('main.placeOrder') }}>
+                                <input type="hidden" id="product_id" name="product_id"
+                                    value="{{ products.unique_product_id }}">
+                                <input class="add-to-cart" type="submit" value="ADD TO CART">
+                            </form>
+
                             <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
                         </div>
                     </div>

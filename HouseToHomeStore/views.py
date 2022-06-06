@@ -95,8 +95,8 @@ def placeOrder():
 
     # create new order if needed
     if order is None:
-        order = ShoppingCart(order_place_status=False, cart_product_title='', cart_product_description='', cart_product_image='',
-                             cart_product_price='', cart_net_total_price=0, shipping_charges=0, cart_total_product_price=0)
+        order = ShoppingCart(order_place_status=False, cart_net_total_price=0,
+                             shipping_charges=0, cart_total_product_price=0)
         try:
             db.session.add(order)
             db.session.commit()
@@ -110,12 +110,12 @@ def placeOrder():
     net_total_price = 0
     shipping_charges = 15.00
     if order is not None:
-        for products in order.products:
+        for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price = total_product_price + \
-                (products.cart_product_price *
-                 products.cart_individual_product_count)
-    net_total_price = net_total_price + total_product_price + shipping_charges
+            total_product_price = total_product_price + (product.price *
+                                                         product.count)
+
+    net_total_price = total_product_price + shipping_charges
 
     # are we adding an item?
     if product_id is not None and order is not None:
@@ -128,7 +128,7 @@ def placeOrder():
                 return 'There was an issue adding the item to your basket'
             return redirect(url_for('main.index'))
         else:
-            products.cart_individual_product_count = products.cart_individual_product_count + 1
+            product.count = product.count + 1
             order.products.append(product)
             db.session.commit()
             return redirect(url_for('main.index'))
@@ -139,10 +139,10 @@ def placeOrder():
 # Delete specific basket items
 @bp.route('/houseToHome/deletecartproduct', methods=['POST'])
 def deletecartproduct():
-    id = request.form['id']
+    delete_cart_product_id = request.form['delete_cart_product_id']
     if 'order_id' in session:
         order = ShoppingCart.query.get_or_404(session['order_id'])
-        product_to_delete = ShoppingCart.query.get(id)
+        product_to_delete = ShoppingCart.query.get(delete_cart_product_id)
         try:
             order.products.remove(product_to_delete)
             db.session.commit()
@@ -167,9 +167,9 @@ def addProductToWishList():
     product_id = request.values.get('product_id')
 
     # retrieve order if there is one
-    if 'order_id' in session.keys():
-        requestByUser = WishList.query.get(session['order_id'])
-        # order will be None if order_id stale
+    if 'wishListorder_id' in session.keys():
+        requestByUser = WishList.query.get(session['wishListorder_id'])
+        # order will be None if wishListorder_id stale
     else:
         # there is no order
         requestByUser = None
@@ -181,7 +181,7 @@ def addProductToWishList():
         try:
             db.session.add(requestByUser)
             db.session.commit()
-            session['order_id'] = requestByUser.wishList_id
+            session['wishListorder_id'] = requestByUser.wishList_id
         except:
             print('failed at add product to wishlist')
             requestByUser = None
@@ -209,8 +209,8 @@ def addProductToWishList():
 @bp.route('/houseToHome/deletewishListproduct', methods=['POST'])
 def deletewishListproduct():
     id = request.form['id']
-    if 'order_id' in session:
-        requestByUser = WishList.query.get_or_404(session['order_id'])
+    if 'wishListorder_id' in session:
+        requestByUser = WishList.query.get_or_404(session['wishListorder_id'])
         product_to_delete = WishList.query.get(id)
         try:
             requestByUser.products.remove(product_to_delete)

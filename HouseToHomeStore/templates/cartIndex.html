@@ -214,19 +214,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% for product in order.products%}
                                         <tr style="border-bottom: dashed;">
                                             <td>
                                                 <div class="display-flex align-center">
                                                     <div class="img-product">
-                                                        <img src="{{ url_for('static',filename='Images/Living/Pillow.png') }}"
+                                                        <img src="{{url_for('static', filename='Images/'+product.category+'/'+product.image)}}"
                                                             alt="pillow image" class="mCS_img_loaded">
                                                     </div>
                                                     <div class="name-product">
-                                                        CUSHIONS - SET OF 4, Living Room
-                                                        <br>Plush Comfortable, grey & yellow shades
+                                                        {{product.title}}
+                                                        <br>{{product.description}}
                                                     </div>
                                                     <div class="price">
-                                                        $50.40
+                                                        {{product.price}}
                                                     </div>
                                                 </div>
                                             </td>
@@ -246,15 +247,17 @@
                                             </td>
                                             <td>
                                                 <div class="total">
-                                                    $50.40
+                                                    {{product.price}}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="product-content">
-                                                    1
+                                                    {{product.count}}
                                                 </div>
                                             </td>
                                         </tr>
+                                        {% endfor %}
+
                                         <tr style="border-bottom: dashed;">
                                             <td>
                                                 <div class="display-flex align-center">
@@ -295,86 +298,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr style="border-bottom: dashed;">
-                                            <td>
-                                                <div class="display-flex align-center">
-                                                    <div class="img-product">
-                                                        <img src="../static/Images/Kitchen/cabo-melamine-dinnerware-set-of-4-blue-c.jpeg"
-                                                            alt="" class="mCS_img_loaded">
-                                                    </div>
-                                                    <div class="name-product">
-                                                        BLUE MELAMINE DINNER SET
-                                                        <br>set of 4 big plates, 4 small plates, 4 bowls
-                                                    </div>
-                                                    <div class="price">
-                                                        $150.00
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="product-content">
-                                                <a class="btn btn-outline-dark btn-floating m-1" href="#!"
-                                                    role="button">
-                                                    <img src="../static/Images/Logos/trash3-fill.svg" width="30"
-                                                        height="30" class="d-inline-block align-top" alt="delete logo">
-                                                </a>
-                                                <a class="btn btn-outline-dark btn-floating m-1"
-                                                    href="../Html/wishListIndex.html" role="button">
-                                                    <img src="../static/Images/Logos/bag-heart-fill.svg" width="30"
-                                                        height="30" class="d-inline-block align-top"
-                                                        alt="wishlist logo">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="total">
-                                                    $150.00
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="product-content">
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="display-flex align-center">
-                                                    <div class="img-product">
-                                                        <img src="../static/Images/BedRoom/BedSheets.jpg" alt=""
-                                                            class="mCS_img_loaded">
-                                                    </div>
-                                                    <div class="name-product">
-                                                        FLORAL KING BEDSHEET
-                                                        <br>orange theme, machine washable
-                                                    </div>
-                                                    <div class="price">
-                                                        $89.00
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="product-content">
-                                                <a class="btn btn-outline-dark btn-floating m-1" href="#!"
-                                                    role="button">
-                                                    <img src="../static/Images/Logos/trash3-fill.svg" width="30"
-                                                        height="30" class="d-inline-block align-top" alt="delete logo">
-                                                </a>
-                                                <a class="btn btn-outline-dark btn-floating m-1"
-                                                    href="../Html/wishListIndex.html" role="button">
-                                                    <img src="../static/Images/Logos/bag-heart-fill.svg" width="30"
-                                                        height="30" class="d-inline-block align-top"
-                                                        alt="wishlist logo">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="total">
-                                                    $89.00
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="product-content">
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
