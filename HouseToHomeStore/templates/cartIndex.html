@@ -29,13 +29,13 @@
             <div class="container" style="padding: 6px;">
 
                 <!-- eCommerce Website Name and Logo -->
-                <a class="navbar-brand-LOGO" href="#">
+                <a class="navbar-brand-LOGO" href="{{ url_for('main.index') }}">
                     <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                         class="d-inline-block align-top" alt="HOUSE TO HOME">
                 </a>
 
                 <div class="navbar-brand-LOGO">
-                    <a class="nav-item text-dark nav-link" href={{ url_for('main.index')}}>HOUSE
+                    <a class="nav-item text-dark nav-link" href="{{ url_for('main.index') }}">HOUSE
                         TO HOME</a>
                 </div>
 
@@ -63,28 +63,29 @@
                                 id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
                                 Category</a>
                             <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                                <a class="dropdown-item" href={{ url_for('main.kitchenproducts')}}>Kitchen</a>
+                                <a class="dropdown-item" href="{{ url_for('main.kitchenproducts') }}">Kitchen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bedroomproducts')}}>Bed Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bedroomproducts') }}">Bed Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bathroomproducts')}}>Bath Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bathroomproducts') }}">Bath Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.livingproducts')}}>Living Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.livingproducts') }}">Living Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.outdoors')}}>Outdoors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.outdoors') }}">Outdoors</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.commonproducts')}}>Common Ones</a>
+                                <a class="dropdown-item" href="{{ url_for('main.commonproducts') }}">Common Ones</a>
                             </div>
                         </div>
 
-                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                        <a href="{{ url_for('main.addProductToWishList') }}"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="WISH LIST">
                             <img src="{{ url_for('static',filename='Images/Logos/bag-heart-fill.svg') }}" width="30"
                                 height="30" alt="WishList Logo">
                         </a>
 
-                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href="{{ url_for('main.placeOrder') }}" class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="SHOPPING CART">
                             <img src="{{ url_for('static',filename='Images/Logos/cart-fill.svg') }}" width="30"
@@ -214,17 +215,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for product in order.products%}
-                                        <tr style="border-bottom: dashed;">
+                                        {% for product in order.products %}
+                                        <tr class="cart_row" style="border-bottom: dashed;">
                                             <td>
                                                 <div class="display-flex align-center">
                                                     <div class="img-product">
                                                         <img src="{{url_for('static', filename='Images/'+product.category+'/'+product.image)}}"
-                                                            alt="pillow image" class="mCS_img_loaded">
+                                                            alt="cart product image" class="mCS_img_loaded">
                                                     </div>
                                                     <div class="name-product">
-                                                        {{product.title}}
-                                                        <br>{{product.description}}
+                                                        {{product.title}} ,
+                                                        <br>DESCRIPTION: {{product.description}}
                                                     </div>
                                                     <div class="price">
                                                         {{product.price}}
@@ -232,72 +233,36 @@
                                                 </div>
                                             </td>
                                             <td class="product-content">
-                                                <a class="btn btn-outline-dark btn-floating m-1" href="#!"
-                                                    role="button">
-                                                    <img src="{{ url_for('static',filename='Images/Logos/trash3-fill.svg') }}"
-                                                        width="30" height="30" class="d-inline-block align-top"
-                                                        alt="delete logo">
-                                                </a>
-                                                <a class="btn btn-outline-dark btn-floating m-1"
-                                                    href="../Html/wishListIndex.html" role="button">
-                                                    <img src="{{ url_for('static',filename='Images/Logos/bag-heart-fill.svg') }}"
-                                                        width="30" height="30" class="d-inline-block align-top"
-                                                        alt="wishlist logo">
-                                                </a>
+
+                                                <!-- _________________ -->
+                                                <form method="POST" action="{{url_for('main.deletecartproduct')}}">
+                                                    <input type="hidden" id="delete_cart_product_id"
+                                                        name="delete_cart_product_id"
+                                                        value="{{product.unique_product_id}}">
+                                                    <input type="submit" value="Delete" class="add-to-cart">
+                                                </form>
+                                                <!-- _________________ -->
+
+                                                <form method="POST" action="{{url_for('main.addProductToWishList')}}">
+                                                    <input type="hidden" id="delete_cart_product_id"
+                                                        name="delete_cart_product_id"
+                                                        value="{{product.unique_product_id}}">
+                                                    <input type="submit" value="Send To WisList" class="add-to-cart">
+                                                </form>
+
                                             </td>
                                             <td>
                                                 <div class="total">
-                                                    {{product.price}}
+                                                    {{"$%.2f"|format (product.price) }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="product-content">
-                                                    {{product.count}}
+                                                    {{product.singleCount}}
                                                 </div>
                                             </td>
                                         </tr>
                                         {% endfor %}
-
-                                        <tr style="border-bottom: dashed;">
-                                            <td>
-                                                <div class="display-flex align-center">
-                                                    <div class="img-product">
-                                                        <img src="../static/Images/CommonOnes/Curtains.jpeg" alt=""
-                                                            class="mCS_img_loaded">
-                                                    </div>
-                                                    <div class="name-product">
-                                                        CURTAINS
-                                                        <br>Large Door light floral curtain set
-                                                    </div>
-                                                    <div class="price">
-                                                        $150.40
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="product-content">
-                                                <a class="btn btn-outline-dark btn-floating m-1" href="#!"
-                                                    role="button">
-                                                    <img src="../static/Images/Logos/trash3-fill.svg" width="30"
-                                                        height="30" class="d-inline-block align-top" alt="delete logo">
-                                                </a>
-                                                <a class="btn btn-outline-dark btn-floating m-1"
-                                                    href="../Html/wishListIndex.html" role="button">
-                                                    <img src="../static/Images/Logos/bag-heart-fill.svg" width="30"
-                                                        height="30" class="d-inline-block align-top"
-                                                        alt="wishlist logo">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="total">
-                                                    $150.40
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="product-content">
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -314,15 +279,16 @@
                                         <tbody>
                                             <tr>
                                                 <td>Subtotal</td>
-                                                <td class="subtotal">$439.80</td>
+                                                <td class="subtotal">{{"$%.2f"|format (total_product_price) }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Shipping</td>
-                                                <td class="free-shipping">$15.00</td>
+                                                <td class="free-shipping">{{"$%.2f"|format (shipping_charges) }}
+                                                </td>
                                             </tr>
                                             <tr class="total-row">
                                                 <td style="font-size: 16px; font-weight: 600;">Total</td>
-                                                <td class="price-total">$454.80</td>
+                                                <td class="price-total">{{ "$%.2f"|format (net_total_price) }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -335,8 +301,8 @@
                                         </form>
                                     </div>
                                     <div class="btn-cart-totals">
-                                        <a href="#" class="update round-black-btn" title="Update Cart"
-                                            style="margin-right:6px;">Update Cart</a>
+                                        <a href="{{ url_for('main.deleteorder') }}" class="update round-black-btn"
+                                            title="EMPTY CART" style="margin-right:6px;">EMPTY CART</a>
                                         <a href="#id03" class="checkout round-black-btn" title="Go to checkOut"
                                             onclick="document.getElementById('id03').style.display='block'"
                                             style="width:auto; margin-right:6px;">Proceed to Checkout
@@ -417,7 +383,7 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
+            <a class="btn btn-outline-dark btn-floating m-1" href="{{ url_for('main.index') }}" role="button">
                 <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                     class="d-inline-block align-top" alt="Home Page">
             </a>

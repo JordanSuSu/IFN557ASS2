@@ -29,13 +29,13 @@
             <div class="container" style="padding: 6px;">
 
                 <!-- eCommerce Website Name and Logo -->
-                <a class="navbar-brand-LOGO" href="#">
+                <a class="navbar-brand-LOGO" href="{{ url_for('main.index') }}">
                     <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                         class="d-inline-block align-top" alt="HOUSE TO HOME">
                 </a>
 
                 <div class="navbar-brand-LOGO">
-                    <a class="nav-item text-dark nav-link" href={{ url_for('main.index')}}>HOUSE
+                    <a class="nav-item text-dark nav-link" href="{{ url_for('main.index') }}">HOUSE
                         TO HOME</a>
                 </div>
 
@@ -59,28 +59,29 @@
                                 id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
                                 Category</a>
                             <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                                <a class="dropdown-item" href={{ url_for('main.kitchenproducts')}}>Kitchen</a>
+                                <a class="dropdown-item" href="{{ url_for('main.kitchenproducts') }}">Kitchen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bedroomproducts')}}>Bed Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bedroomproducts') }}">Bed Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bathroomproducts')}}>Bath Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bathroomproducts') }}">Bath Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.livingproducts')}}>Living Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.livingproducts') }}">Living Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.outdoors')}}>Outdoors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.outdoors') }}">Outdoors</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.commonproducts')}}>Common Ones</a>
+                                <a class="dropdown-item" href="{{ url_for('main.commonproducts') }}">Common Ones</a>
                             </div>
                         </div>
 
-                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                        <a href="{{ url_for('main.addProductToWishList') }}"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="WISH LIST">
                             <img src="{{ url_for('static',filename='Images/Logos/bag-heart-fill.svg') }}" width="30"
                                 height="30" alt="WishList Logo">
                         </a>
 
-                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href="{{ url_for('main.placeOrder') }}" class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="SHOPPING CART">
                             <img src="{{ url_for('static',filename='Images/Logos/cart-fill.svg') }}" width="30"
@@ -208,238 +209,51 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="border-bottom: dashed;">
+                                {% for product in requestByUser.products %}
+                                <tr class="wishList_row" style="border-bottom: dashed;">
                                     <td>
                                         <div class="display-flex align-center">
                                             <div class="img-product">
-                                                <img src="{{ url_for('static',filename='Images/Living/Pillow.png') }}"
-                                                    alt="" class="mCS_img_loaded">
+                                                <img src="{{url_for('static', filename='Images/'+product.category+'/'+product.image)}}"
+                                                    alt="wishList item image" class="mCS_img_loaded">
                                             </div>
                                             <div class="name-product">
-                                                CUSHIONS
-                                                <br>Set of 4, Plush Comfortable, grey & yellow shades
+                                                {{product.title}} ,
+                                                <br>DESCRIPTION: {{product.description}}
                                             </div>
                                             <div class="price">
-                                                $50.40
+                                                {{"$%.2f"|format (product.price) }}
                                             </div>
                                         </div>
                                     </td>
                                     <td class="product-count">
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
-                                            <img src="{{ url_for('static',filename='Images/Logos/trash3-fill.svg') }}"
-                                                width="30" height="30" class="d-inline-block align-top"
-                                                alt="Contact Us">
-                                        </a>
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="../Html/cartIndex.html"
-                                            role="button">
-                                            <img src="{{ url_for('static',filename='Images/Logos/cart-fill.svg') }}"
-                                                width="30" height="30" class="d-inline-block align-top"
-                                                alt="Contact Us">
-                                        </a>
+                                        <!-- _________________ -->
+                                        <form method="POST" action="{{url_for('main.deletewishListproduct')}}">
+                                            <input type="hidden" id="wishlist_item_id" name="wishlist_item_id"
+                                                value="{{product.unique_product_id}}">
+                                            <input type="submit" value="Delete" class="add-to-cart">
+                                        </form>
+                                        <!-- _________________ -->
+
+                                        <form action="{{ url_for('main.placeOrder') }}">
+                                            <input type="hidden" id="product_id" name="product_id"
+                                                value="{{ product.unique_product_id }}">
+                                            <input class="add-to-cart" type="submit" value="ADD TO CART">
+                                        </form>
+
                                     </td>
                                     <td>
                                         <div class="total">
-                                            $50.40
+                                            {{"$%.2f"|format (product.price) }}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="product-count">
-                                            1
+                                            {{product.wishListCount}}
                                         </div>
                                     </td>
                                 </tr>
-                                <tr style="border-bottom: dashed;">
-                                    <td>
-                                        <div class="display-flex align-center">
-                                            <div class="img-product">
-                                                <img src="../static/Images/BathRoom/Containers.jpeg" alt=""
-                                                    class="mCS_img_loaded">
-                                            </div>
-                                            <div class="name-product">
-                                                HAMPOO/SOAP/CONDITIONER CONTAINER
-                                                <br>SET of - 3, Amber glass colored, pump bottles
-                                            </div>
-                                            <div class="price">
-                                                $80.99
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-count">
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
-                                            <img src="../static/Images/Logos/trash3-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="../Html/cartIndex.html"
-                                            role="button">
-                                            <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="total">
-                                            $161.98
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-count">
-                                            2
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: dashed;">
-                                    <td>
-                                        <div class="display-flex align-center">
-                                            <div class="img-product">
-                                                <img src="../static/Images/Living/Pillow.png" alt=""
-                                                    class="mCS_img_loaded">
-                                            </div>
-                                            <div class="name-product">
-                                                Apple iPad Mini
-                                                <br>G2356
-                                            </div>
-                                            <div class="price">
-                                                $1,250.00
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-count">
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
-                                            <img src="../static/Images/Logos/trash3-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="../Html/cartIndex.html"
-                                            role="button">
-                                            <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="total">
-                                            $6,250.00
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-count">
-                                            1
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: dashed;">
-                                    <td>
-                                        <div class="display-flex align-center">
-                                            <div class="img-product">
-                                                <img src="../static/Images/CommonOnes/wallpaper.png" alt=""
-                                                    class="mCS_img_loaded">
-                                            </div>
-                                            <div class="name-product">
-                                                WALLPEPER
-                                                <br>Floral white background
-                                            </div>
-                                            <div class="price">
-                                                $670
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-count">
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
-                                            <img src="../static/Images/Logos/trash3-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="../Html/cartIndex.html"
-                                            role="button">
-                                            <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="total">
-                                            $670
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-count">
-                                            1
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: dashed;">
-                                    <td>
-                                        <div class="display-flex align-center">
-                                            <div class="img-product">
-                                                <img src="../static/Images/OutDoors/OutDoorFurniture set.jpeg" alt=""
-                                                    class="mCS_img_loaded">
-                                            </div>
-                                            <div class="name-product">
-                                                OUTSIDE CLIMATE RESISTANT FURNITURE SET
-                                                <br>natural Soft white color, Coffee table, 2 side sofas, main
-                                                sofa,
-                                                ottoman, pillows
-                                            </div>
-                                            <div class="price">
-                                                $500.50
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-count">
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
-                                            <img src="../static/Images/Logos/trash3-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="../Html/cartIndex.html"
-                                            role="button">
-                                            <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="total">
-                                            $500.50
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-count">
-                                            1
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="display-flex align-center">
-                                            <div class="img-product">
-                                                <img src="../static/Images/Living/Plant_Artificial.jpg" alt=""
-                                                    class="mCS_img_loaded">
-                                            </div>
-                                            <div class="name-product">
-                                                ARTIFICIAL INDOOR PLANT
-                                                <br>green, ceramic vase underneath
-                                            </div>
-                                            <div class="price">
-                                                $90.40
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-count">
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
-                                            <img src="../static/Images/Logos/trash3-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                        <a class="btn btn-outline-dark btn-floating m-1" href="../Html/cartIndex.html"
-                                            role="button">
-                                            <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30"
-                                                class="d-inline-block align-top" alt="Contact Us">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="total">
-                                            $90.40
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-count">
-                                            1
-                                        </div>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
 
@@ -457,7 +271,7 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
+            <a class="btn btn-outline-dark btn-floating m-1" href="{{ url_for('main.index') }}" role="button">
                 <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                     class="d-inline-block align-top" alt="Home page">
             </a>

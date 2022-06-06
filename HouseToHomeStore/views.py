@@ -10,21 +10,21 @@ import logging
 
 bp = Blueprint('main', __name__, template_folder='templates')
 
-
-# todo: 1. create databse for models
-# todo: 2. load products from data base to the 6 different products page
-# todo: 3. delete product from cart
-# todo: 4. delete allllll the products from cart
-# todo: 5. delete products from wishlist
-# todo: 6. add products to cart
-# todo: 7. add products to wishList both from products page and cart
 # todo: 8. make login form work in modal if possible
-# todo: 9. check houseToHome Database content
+# todo: 12. make send to wishlist button work from cart page
+# todo: 14. COUNT NOT INCREASING
+# todo: 13. ADD FLASHES to notify user product has been added
 # todo: 10. delete extra folders in project as of sir ..........comment properly and add details
 # todo: 11. Make final test and prepare vedio
 
 #! COMPLETED TASKS:
 #! 1. displayed routes for products page
+#! 2. load products from data base to the 6 different products page
+#! 4. delete allllll the products from cart
+#! 4. displayed routes for products page
+#! 5. delete products from wishlist
+#! 6. add products to cart and wishlist
+#! 9. check houseToHome Database content
 
 
 @bp.route('/houseToHome')
@@ -32,22 +32,10 @@ def index():
     return render_template('index.html')
 
 
-@bp.route('/houseToHome/cart/')
-def cart():
-    return render_template('cartIndex.html')
-
-
-@bp.route('/houseToHome/wishlist/')
-def wishlist():
-    return render_template('wishListIndex.html')
-
-
 @bp.route('/houseToHome/kitchenproducts/')
 def kitchenproducts():
     kitchensP = Product.query.filter(Product.category == 'Kitchen')
-    # logging.info(kitchensP)
     return render_template('kitchenIndex.html', kitchensP=kitchensP)
-    # return render_template('kitchenIndex.html')
 
 
 @bp.route('/houseToHome/livingproducts/')
@@ -79,8 +67,10 @@ def commonproducts():
     commonP = Product.query.filter(Product.category == 'Common')
     return render_template('commonOnesIndex.html', commonP=commonP)
 
-
+# _______________________________________ SHOPPING CART METHODS ____________________________________________
 # Referred to as "Cart" to the user
+
+
 @bp.route('/houseToHome/placeOrder', methods=['POST', 'GET'])
 def placeOrder():
     product_id = request.values.get('product_id')
@@ -88,9 +78,9 @@ def placeOrder():
     # retrieve order if there is one
     if 'order_id' in session.keys():
         order = ShoppingCart.query.get(session['order_id'])
-        # order will be None if order_id stale
+       # order will be None if order_id stale
     else:
-        # there is no order
+       # there is no order
         order = None
 
     # create new order if needed
@@ -108,12 +98,13 @@ def placeOrder():
     # calcultate totalprice
     total_product_price = 0
     net_total_price = 0
-    shipping_charges = 15.00
+    shipping_charges = 0
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
             total_product_price = total_product_price + (product.price *
-                                                         product.count)
+                                                         product.singleCount)
+            shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
 
@@ -128,12 +119,13 @@ def placeOrder():
                 return 'There was an issue adding the item to your basket'
             return redirect(url_for('main.index'))
         else:
-            product.count = product.count + 1
+            product.shoppingCartcount = product.singleCount + 1
             order.products.append(product)
             db.session.commit()
-            return redirect(url_for('main.index'))
+            flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+            return redirect(url_for('main.placeOrder'))
 
-    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price)
+    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges)
 
 
 # Delete specific basket items
@@ -142,7 +134,7 @@ def deletecartproduct():
     delete_cart_product_id = request.form['delete_cart_product_id']
     if 'order_id' in session:
         order = ShoppingCart.query.get_or_404(session['order_id'])
-        product_to_delete = ShoppingCart.query.get(delete_cart_product_id)
+        product_to_delete = Product.query.get(delete_cart_product_id)
         try:
             order.products.remove(product_to_delete)
             db.session.commit()
@@ -157,10 +149,11 @@ def deletecartproduct():
 def deleteorder():
     if 'order_id' in session:
         del session['order_id']
-        flash('All items deleted')
+        flash('ALL PRODUCTS DELETED FROM SHOPPING CART')
     return redirect(url_for('main.index'))
 
 
+# _______________________________________ WISHLIST METHODS __________________________________________
 # Referred to as "Add Product To WishList" by the user
 @bp.route('/houseToHome/addProductToWishList', methods=['POST', 'GET'])
 def addProductToWishList():
@@ -176,8 +169,8 @@ def addProductToWishList():
 
     # create new request if needed
     if requestByUser is None:
-        requestByUser = WishList(wishList_product_title='', wishList_product_description='', wishList_product_image='',
-                                 wishList_product_price='', individual_product_count=0)
+        requestByUser = WishList(
+            item_add_status=False, individual_product_count=0)
         try:
             db.session.add(requestByUser)
             db.session.commit()
@@ -197,10 +190,11 @@ def addProductToWishList():
                 return 'There was an issue adding the item to your basket'
             return redirect(url_for('main.index'))
         else:
-            product.individual_product_count = product.individual_product_count + 1
+            product.wishListCount = product.singleCount + 1
             requestByUser.products.append(product)
             db.session.commit()
-            return redirect(url_for('main.index'))
+            flash('ITEM ADDED SUCCESSFULLY TO YOUR WISHLIST!!')
+            return redirect(url_for('main.addProductToWishList'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
 
@@ -208,10 +202,10 @@ def addProductToWishList():
 # Delete specific WishList items
 @bp.route('/houseToHome/deletewishListproduct', methods=['POST'])
 def deletewishListproduct():
-    id = request.form['id']
+    wishlist_item_id = request.form['wishlist_item_id']
     if 'wishListorder_id' in session:
         requestByUser = WishList.query.get_or_404(session['wishListorder_id'])
-        product_to_delete = WishList.query.get(id)
+        product_to_delete = Product.query.get(wishlist_item_id)
         try:
             requestByUser.products.remove(product_to_delete)
             db.session.commit()

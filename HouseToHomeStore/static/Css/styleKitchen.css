@@ -267,6 +267,7 @@ h10 {
     border-radius: 5px;
     display: inline-block;
     background: #D35400;
+    border: #D35400;
     color: white;
     font-family: 'Courier New', sans-serif;
     padding: 10px;
@@ -279,7 +280,7 @@ h10 {
     border-radius: 5px;
     background: #FAD7A0;
     color: black;
-    border: none;
+    border: #FAD7A0;
     font-size: .90rem;
     padding: 10px;
     margin: 5px;
@@ -291,7 +292,7 @@ h10 {
     border-radius: 5px;
     background: #116021;
     color: white;
-    border: none;
+    border: #116021;
     font-size: .90rem;
     padding: 10px;
     margin: 5px;

@@ -1,15 +1,6 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<!-- add a big banner to welcome user -->
-<!-- <div class="jumbotron jumbotron-fluid card card-image">
-    <div class="text-white text-center py-5 px-4">
-        <div>
-            <h1 class="display-2">Welcome to Milton Tours</h1>
-            <p class="display-4 text-dark">You need a vacation!</p>
-        </div>
-    </div>
-</div> -->
 
 {% endblock %}
 
@@ -40,7 +31,7 @@
                                 to view available
                                 products.</p>
                             <div class="text-center">
-                                <a href={{ url_for('main.kitchenproducts')}} class="btn-card">BUY HERE</a>
+                                <a href="{{ url_for('main.kitchenproducts') }}" class="btn-card">BUY HERE</a>
                             </div>
 
                         </div>
@@ -57,7 +48,7 @@
                                 below to view available
                                 products.</p>
                             <div class="text-center">
-                                <a href={{ url_for('main.livingproducts')}} class="btn-card">BUY HERE</a>
+                                <a href="{{ url_for('main.livingproducts') }}" class="btn-card">BUY HERE</a>
                             </div>
 
                         </div>
@@ -73,7 +64,7 @@
                             <p class="text-center">Make your bath room look amazing and functional by clicking
                                 below to view available products.</p>
                             <div class="text-center">
-                                <a href={{ url_for('main.bathroomproducts')}} class="btn-card">BUY HERE</a>
+                                <a href="{{ url_for('main.bathroomproducts') }}" class="btn-card">BUY HERE</a>
                             </div>
 
                         </div>
@@ -97,7 +88,7 @@
                                 to view available
                                 products.</p>
                             <div class="text-center">
-                                <a href={{ url_for('main.bedroomproducts')}} class="btn-card">BUY HERE</a>
+                                <a href="{{ url_for('main.bedroomproducts') }}" class="btn-card">BUY HERE</a>
                             </div>
 
                         </div>
@@ -115,7 +106,7 @@
                                 below to view available
                                 products.</p>
                             <div class="text-center">
-                                <a href={{ url_for('main.commonproducts')}} class="btn-card">BUY HERE</a>
+                                <a href="{{ url_for('main.commonproducts') }}" class="btn-card">BUY HERE</a>
                             </div>
 
                         </div>
@@ -133,7 +124,7 @@
                                 below to view available
                                 products.</p>
                             <div class="text-center">
-                                <a href={{ url_for('main.outdoors')}} class="btn-card">BUY HERE</a>
+                                <a href="{{ url_for('main.outdoors') }}" class="btn-card">BUY HERE</a>
                             </div>
 
                         </div>

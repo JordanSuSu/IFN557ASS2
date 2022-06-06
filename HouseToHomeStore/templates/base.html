@@ -28,13 +28,13 @@
             <div class="container" style="padding: 6px;">
 
                 <!-- eCommerce Website Name and Logo -->
-                <a class="navbar-brand-LOGO" href="../Html/index.html">
+                <a class="navbar-brand-LOGO" href="{{ url_for('main.index') }}">
                     <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
                         alt="HOUSE TO HOME">
                 </a>
 
                 <div class="navbar-brand-LOGO">
-                    <a class="nav-item text-dark nav-link" href={{ url_for('main.index')}}>HOUSE
+                    <a class="nav-item text-dark nav-link" href="{{ url_for('main.index') }}">HOUSE
                         TO HOME</a>
                 </div>
 
@@ -62,27 +62,28 @@
                                 id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
                                 Category</a>
                             <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                                <a class="dropdown-item" href={{ url_for('main.kitchenproducts')}}>Kitchen</a>
+                                <a class="dropdown-item" href="{{ url_for('main.kitchenproducts') }}">Kitchen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bedroomproducts')}}>Bed Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bedroomproducts') }}">Bed Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bathroomproducts')}}>Bath Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bathroomproducts') }}">Bath Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.livingproducts')}}>Living Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.livingproducts') }}">Living Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.outdoors')}}>Outdoors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.outdoors') }}">Outdoors</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.commonproducts')}}>Common Ones</a>
+                                <a class="dropdown-item" href="{{ url_for('main.commonproducts') }}">Common Ones</a>
                             </div>
                         </div>
 
-                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
-                            data-toggle="tooltip" data-placement="bottom" title="WISH LIST">
+                        <a href="{{ url_for('main.addProductToWishList') }}"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
+                            data-placement="bottom" title="WISH LIST">
                             <img src="../static/Images/Logos/bag-heart-fill.svg" width="30" height="30"
                                 alt="WishList Logo">
                         </a>
 
-                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href="{{ url_for('main.placeOrder') }}" class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             data-toggle="tooltip" data-placement="bottom" title="SHOPPING CART">
                             <img src="../static/Images/Logos/cart-fill.svg" width="30" height="30" alt="Cart Logo">
                         </a>
@@ -213,7 +214,7 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
+            <a class="btn btn-outline-dark btn-floating m-1" href="{{ url_for('main.index') }}" role="button">
                 <img src="../static/Images/Logos/Brand.jpeg" width="30" height="30" class="d-inline-block align-top"
                     alt="Home page">
             </a>

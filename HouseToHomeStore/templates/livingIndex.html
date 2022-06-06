@@ -35,7 +35,7 @@
                 </a>
 
                 <div class="navbar-brand-LOGO">
-                    <a class="nav-item text-dark nav-link" href={{ url_for('main.index')}}>HOUSE TO HOME</a>
+                    <a class="nav-item text-dark nav-link" href="{{ url_for('main.index') }}">HOUSE TO HOME</a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
@@ -81,28 +81,29 @@
                                 id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
                                 Category</a>
                             <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                                <a class="dropdown-item" href={{ url_for('main.kitchenproducts')}}>Kitchen</a>
+                                <a class="dropdown-item" href="{{ url_for('main.kitchenproducts') }}">Kitchen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bedroomproducts')}}>Bed Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bedroomproducts') }}">Bed Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bathroomproducts')}}>Bath Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bathroomproducts') }}">Bath Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.livingproducts')}}>Living Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.livingproducts') }}">Living Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.outdoors')}}>Outdoors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.outdoors') }}">Outdoors</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.commonproducts')}}>Common Ones</a>
+                                <a class="dropdown-item" href="{{ url_for('main.commonproducts') }}">Common Ones</a>
                             </div>
                         </div>
 
-                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                        <a href="{{ url_for('main.addProductToWishList') }}"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="WISH LIST">
                             <img src="{{ url_for('static',filename='Images/Logos/bag-heart-fill.svg') }}" width="30"
                                 height="30" alt="WishList Logo">
                         </a>
 
-                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href="{{ url_for('main.placeOrder') }}" class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="SHOPPING CART">
                             <img src="{{ url_for('static',filename='Images/Logos/cart-fill.svg') }}" width="30"
@@ -225,122 +226,17 @@
                 SHOP NOW!!!!!!</h6>
         </div>
 
-        <!--Shop by category cards SECTION - 1  -->
-
-        <!-- <div class="container-fluid fadeThePicture-here">
-            <div class="row justify-content-center">
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/Pillow.png">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">CUSHIONS</h3>
-                            <h3 class="description">Description: Set of 4, Plush Comfortable, grey & yellow shades</h3>
-                            <h3 class="dimensions">dimensions: 40 cm * 40 cm</h3>
-                            <h3 class="material">material: cotton, machine washable</h3>
-                            <div class="price">
-                                $50.40
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/Throw_Blanket.jpg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">TASSELED THROW BLANKET</h3>
-                            <h3 class="description">Description: Set of 4, KNITTED, Common shades as in picture</h3>
-                            <h3 class="dimensions">dimensions: 2 meters * 2 meters</h3>
-                            <h3 class="material">material: Polyester, machine washable</h3>
-                            <div class="price">
-                                $56.00
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                padding-top: 10px;
-                padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/Plant_Artificial.jpg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">ARTIFICIAL INDOOR PLANT</h3>
-                            <h3 class="description">Description: green, ceramic vase underneath</h3>
-                            <h3 class="dimensions">dimensions: 2 meters, Green</h3>
-                            <h3 class="material">material: resin and plastic</h3>
-                            <div class="price">
-                                $90.40
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/Living/ottoman_Jpeg.jpg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">OTTOMAN</h3>
-                            <h3 class="description">Description: tan color</h3>
-                            <h3 class="dimensions">dimensions: 2 feet hieght, 0.5 meter radius</h3>
-                            <h3 class="material">material: TEDDY BEAR FABRIC</h3>
-                            <div class="price">
-                                $18.50
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!--Shop by category cards  SECTION - 2 -->
+        <!--Shop by category cards SECTION -->
         <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
-                <!-- <div class="card-columns">
-                    {% for product in kitchensP%}
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 class="card-title">{{product.title}}</h4>
-                            <p class="card-text">{{product.description}}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div> -->
                 {% for products in livingsP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
+                            <img class="pic-1"
+                                src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
                             <h3 class="title">{{products.title}}</h3>
@@ -350,8 +246,17 @@
                             <div class="price">
                                 ${{products.price}}
                             </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                            <form action="{{ url_for('main.placeOrder') }}">
+                                <input type="hidden" id="product_id" name="product_id"
+                                    value="{{ products.unique_product_id }}">
+                                <input class="add-to-cart" type="submit" value="ADD TO CART">
+                            </form>
+
+                            <form action="{{ url_for('main.addProductToWishList') }}">
+                                <input type="hidden" id="product_id" name="product_id"
+                                    value="{{ products.unique_product_id }}">
+                                <input class="add-to-cart" type="submit" value="ADD TO WISHLIST">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -368,7 +273,7 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
+            <a class="btn btn-outline-dark btn-floating m-1" href="{{ url_for('main.index') }}" role="button">
                 <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                     class="d-inline-block align-top" alt="Home page">
             </a>

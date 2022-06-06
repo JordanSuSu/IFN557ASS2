@@ -157,7 +157,7 @@ h10 {
 .cart-wrap {
     padding: 40px 0;
     font-family: 'Open Sans', sans-serif;
-    background-image: url("../Images/BackgroundImg/Background.jpeg");
+    background-image: url("../Images/BackgroundImg/BackgroundDim.jpeg");
     border-top: 1px solid black;
     background-attachment: fixed;
 }
@@ -579,4 +579,41 @@ span.psw {
     border-radius: 5px;
     border: 2px solid black;
     margin: 5% auto 5% auto;
+}
+
+
+.cart_row .add-to-cart {
+    min-height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #D35400;
+    border: #D35400;
+    color: white;
+    font-family: 'Courier New', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    font-size: .90rem;
+}
+
+.cart_row:hover .add-to-cart {
+    min-height: 40px;
+    border-radius: 5px;
+    background: #FAD7A0;
+    color: black;
+    border: #FAD7A0;
+    font-size: .90rem;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+.cart_row .add-to-cart:hover {
+    min-height: 40px;
+    border-radius: 5px;
+    background: #116021;
+    color: white;
+    border: #116021;
+    font-size: .90rem;
+    padding: 10px;
+    margin: 5px;
 }

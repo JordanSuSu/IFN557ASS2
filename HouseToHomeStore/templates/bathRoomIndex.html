@@ -29,13 +29,13 @@
             <div class="container" style="padding: 6px;">
 
                 <!-- eCommerce Website Name and Logo -->
-                <a class="navbar-brand-LOGO" href="#">
+                <a class="navbar-brand-LOGO" href="{{ url_for('main.index') }}">
                     <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                         class="d-inline-block align-top" alt="HOUSE TO HOME">
                 </a>
 
                 <div class="navbar-brand-LOGO">
-                    <a class="nav-item text-dark nav-link" href={{ url_for('main.index')}}>HOUSE TO HOME</a>
+                    <a class="nav-item text-dark nav-link" href="{{ url_for('main.index') }}">HOUSE TO HOME</a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
@@ -79,29 +79,30 @@
                                 id="bookDropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop By
                                 Category</a>
                             <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                                <a class="dropdown-item" href={{ url_for('main.kitchenproducts')}}>Kitchen</a>
+                                <a class="dropdown-item" href="{{ url_for('main.kitchenproducts') }}">Kitchen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bedroomproducts')}}>Bed Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bedroomproducts') }}">Bed Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.bathroomproducts')}}>Bath Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.bathroomproducts') }}">Bath Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.livingproducts')}}>Living Room</a>
+                                <a class="dropdown-item" href="{{ url_for('main.livingproducts') }}">Living Room</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.outdoors')}}>Outdoors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.outdoors') }}">Outdoors</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href={{ url_for('main.commonproducts')}}>Common Ones</a>
+                                <a class="dropdown-item" href="{{ url_for('main.commonproducts') }}">Common Ones</a>
                             </div>
                         </div>
 
 
-                        <a href={{ url_for('main.wishlist')}} class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
+                        <a href="{{ url_for('main.addProductToWishList') }}"
+                            class="nav-item text-dark nav-link navbar-Wishlist-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="WISH LIST">
                             <img src="{{ url_for('static',filename='Images/Logos/bag-heart-fill.svg') }}" width="30"
                                 height="30" alt="WishList Logo">
                         </a>
 
-                        <a href={{ url_for('main.cart')}} class="nav-item text-dark nav-link navbar-Cart-LOGO"
+                        <a href="{{ url_for('main.placeOrder') }}" class="nav-item text-dark nav-link navbar-Cart-LOGO"
                             class="nav-item text-dark nav-link navbar-Wishlist-LOGO" data-toggle="tooltip"
                             data-placement="bottom" title="SHOPPING CART">
                             <img src="{{ url_for('static',filename='Images/Logos/cart-fill.svg') }}" width="30"
@@ -224,123 +225,18 @@
                 SHOP NOW!!!!!!</h6>
         </div>
 
-        <!--Shop by category cards SECTION - 1  -->
-
-        <!-- <div class="container-fluid fadeThePicture-here">
-            <div class="row justify-content-center">
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/BathRoom/Bath Duck.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">KIDS BATH DUCK</h3>
-                            <h3 class="description">Description: Yellow small duck with squeezy noise
-                            </h3>
-                            <h3 class="dimensions">dimensions: medium</h3>
-                            <h3 class="material">material: rubber</h3>
-                            <div class="price">
-                                $10.90
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/BathRoom/Bath Mats.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">BATH MAT</h3>
-                            <h3 class="description">Description: orange theme, machine washable</h3>
-                            <h3 class="dimensions">dimensions: 70 centimeters * 30 centimeters</h3>
-                            <h3 class="material">material: Cotton Jute + Polyester</h3>
-                            <div class="price">
-                                $26.00
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 col-sm-6" style="
-                padding-top: 10px;
-                padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/BathRoom/bodyTowel.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">SIDE NIGHT STAND</h3>
-                            <h3 class="description">Description: set of 7 in vibrant colors</h3>
-                            <h3 class="dimensions">dimensions: large</h3>
-                            <h3 class="material">material: Cotton with ruffle texture</h3>
-                            <div class="price">
-                                $240.40
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-6" style="
-                    padding-top: 10px;
-                    padding-bottom: 10px;">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <img class="pic-1" src="../static/Images/BathRoom/Containers.jpeg">
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">SHAMPOO/SOAP/CONDITIONER CONTAINER</h3>
-                            <h3 class="description">Description: SET of - 3, Amber glass colored, pump bottles</h3>
-                            <h3 class="dimensions">dimensions: standard size</h3>
-                            <h3 class="material">material: high quality glass</h3>
-                            <div class="price">
-                                $80.99
-                            </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!--Shop by category cards  SECTION - 2 -->
+        <!--Shop by category cards  SECTION -->
         <div class="container-fluid fadeThePicture-here">
             <div class="row justify-content-center">
-                <!-- <div class="card-columns">
-                    {% for product in kitchensP%}
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 class="card-title">{{product.title}}</h4>
-                            <p class="card-text">{{product.description}}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div> -->
+
                 {% for products in bathroomsP%}
                 <div class="col-md-3 col-sm-6" style="
                     padding-top: 10px;
                     padding-bottom: 10px;">
                     <div class="product-grid4">
                         <div class="product-image4">
-                            <img class="pic-1" src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
+                            <img class="pic-1"
+                                src="{{url_for('static', filename='Images/'+products.category+'/'+products.image)}}">
                         </div>
                         <div class="product-content">
                             <h3 class="title">{{products.title}}</h3>
@@ -350,8 +246,18 @@
                             <div class="price">
                                 ${{products.price}}
                             </div>
-                            <a class="add-to-cart" href="../Html/cartIndex.html">ADD TO CART</a>
-                            <a class="add-to-cart" href="../Html/wishListIndex.html">ADD TO WISHLIST</a>
+                            <form action="{{ url_for('main.placeOrder') }}">
+                                <input type="hidden" id="product_id" name="product_id"
+                                    value="{{ products.unique_product_id }}">
+                                <input class="add-to-cart" type="submit" value="ADD TO CART">
+                            </form>
+
+                            <form action="{{ url_for('main.addProductToWishList') }}">
+                                <input type="hidden" id="product_id" name="product_id"
+                                    value="{{ products.unique_product_id }}">
+                                <input class="add-to-cart" type="submit" value="ADD TO WISHLIST">
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -366,7 +272,7 @@
         <div class="container p-4 footer">
 
             <!-- home -->
-            <a class="btn btn-outline-dark btn-floating m-1" href={{ url_for('main.index')}} role="button">
+            <a class="btn btn-outline-dark btn-floating m-1" href="{{ url_for('main.index') }}" role="button">
                 <img src="{{ url_for('static',filename='Images/Logos/Brand.jpeg') }}" width="30" height="30"
                     class="d-inline-block align-top" alt="Home page">
             </a>
