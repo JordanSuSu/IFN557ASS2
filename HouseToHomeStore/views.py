@@ -117,7 +117,7 @@ def placeOrder():
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.placeOrder'))
         else:
             product.shoppingCartcount = product.singleCount + 1
             order.products.append(product)
@@ -138,10 +138,11 @@ def deletecartproduct():
         try:
             order.products.remove(product_to_delete)
             db.session.commit()
-            return redirect(url_for('main.index'))
+            flash('PRODUCT REMOVED SUCCESSFULLY FROM SHOPPING CART!!')
+            return redirect(url_for('main.placeOrder'))
         except:
             return 'Problem deleting item from order'
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.placeOrder'))
 
 
 # Scrap basket
@@ -150,7 +151,7 @@ def deleteorder():
     if 'order_id' in session:
         del session['order_id']
         flash('ALL PRODUCTS DELETED FROM SHOPPING CART')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.placeOrder'))
 
 
 # _______________________________________ WISHLIST METHODS __________________________________________
@@ -188,12 +189,11 @@ def addProductToWishList():
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.addProductToWishList'))
         else:
             product.wishListCount = product.singleCount + 1
             requestByUser.products.append(product)
             db.session.commit()
-            flash('ITEM ADDED SUCCESSFULLY TO YOUR WISHLIST!!')
             return redirect(url_for('main.addProductToWishList'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
@@ -209,10 +209,10 @@ def deletewishListproduct():
         try:
             requestByUser.products.remove(product_to_delete)
             db.session.commit()
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.addProductToWishList'))
         except:
             return 'Problem deleting item from order'
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.addProductToWishList'))
 
 
 @bp.route('/houseToHome/proceedtocheckout', methods=['POST', 'GET'])

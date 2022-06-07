@@ -175,7 +175,6 @@
             </div>
         </nav>
 
-
         <!--Jumbotron for Hero Section -->
         <div class="jumbotron jumbotron-fluid card card-image">
             <div class="row justify-content-center mt-5 pb-4">
@@ -243,11 +242,10 @@
                                                 </form>
                                                 <!-- _________________ -->
 
-                                                <form method="POST" action="{{url_for('main.addProductToWishList')}}">
-                                                    <input type="hidden" id="delete_cart_product_id"
-                                                        name="delete_cart_product_id"
-                                                        value="{{product.unique_product_id}}">
-                                                    <input type="submit" value="Send To WisList" class="add-to-cart">
+                                                <form action="{{ url_for('main.addProductToWishList') }}">
+                                                    <input type="hidden" id="product_id" name="product_id"
+                                                        value="{{ product.unique_product_id }}">
+                                                    <input class="add-to-cart" type="submit" value="ADD TO WISHLIST">
                                                 </form>
 
                                             </td>
