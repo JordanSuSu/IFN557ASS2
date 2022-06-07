@@ -7,7 +7,6 @@ from .login import LogInForm
 from . import db
 import logging
 
-
 bp = Blueprint('main', __name__, template_folder='templates')
 
 # todo: 8. make login form work in modal if possible
@@ -26,41 +25,34 @@ bp = Blueprint('main', __name__, template_folder='templates')
 # todo: 12. make send to wishlist button work from cart page
 # todo: 13. ADD FLASHES to notify user product has been added
 
-
 @bp.route('/houseToHome')
 def index():
     return render_template('index.html')
-
 
 @bp.route('/houseToHome/kitchenproducts/')
 def kitchenproducts():
     kitchensP = Product.query.filter(Product.category == 'Kitchen')
     return render_template('kitchenIndex.html', kitchensP=kitchensP)
 
-
 @bp.route('/houseToHome/livingproducts/')
 def livingproducts():
     livingsP = Product.query.filter(Product.category == 'LivingRoom')
     return render_template('livingIndex.html', livingsP=livingsP)
-
 
 @bp.route('/houseToHome/bathroomproducts/')
 def bathroomproducts():
     bathroomsP = Product.query.filter(Product.category == 'BathRoom')
     return render_template('bathRoomIndex.html', bathroomsP=bathroomsP)
 
-
 @bp.route('/houseToHome/outdoors/')
 def outdoors():
     outdoorsP = Product.query.filter(Product.category == 'Outdoor')
     return render_template('outDoorsIndex.html', outdoorsP=outdoorsP)
 
-
 @bp.route('/houseToHome/bedroomproducts/')
 def bedroomproducts():
     bedroomsP = Product.query.filter(Product.category == 'BedRoom')
     return render_template('bedRoomIndex.html', bedroomsP=bedroomsP)
-
 
 @bp.route('/houseToHome/commonproducts/')
 def commonproducts():
@@ -70,9 +62,9 @@ def commonproducts():
 # _______________________________________ SHOPPING CART METHODS ____________________________________________
 # Referred to as "Cart" to the user
 
-
 @bp.route('/houseToHome/placeOrder', methods=['POST', 'GET'])
 def placeOrder():
+    form = ProceedToCheckoutForm()
     product_id = request.values.get('product_id')
 
     # retrieve order if there is one
@@ -126,8 +118,7 @@ def placeOrder():
             flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
 
-    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges)
-
+    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges, form=form)
 
 # Delete specific basket items
 @bp.route('/houseToHome/deletecartproduct', methods=['POST'])
@@ -145,7 +136,6 @@ def deletecartproduct():
             return 'Problem deleting item from order'
     return redirect(url_for('main.placeOrder'))
 
-
 # Scrap basket
 @bp.route('/houseToHome/emptycart')
 def deleteorder():
@@ -153,7 +143,6 @@ def deleteorder():
         del session['order_id']
         flash('ALL PRODUCTS DELETED FROM SHOPPING CART')
     return redirect(url_for('main.placeOrder'))
-
 
 # _______________________________________ WISHLIST METHODS __________________________________________
 # Referred to as "Add Product To WishList" by the user
@@ -201,7 +190,6 @@ def addProductToWishList():
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
 
-
 # Delete specific WishList items
 @bp.route('/houseToHome/deletewishListproduct', methods=['POST'])
 def deletewishListproduct():
@@ -218,7 +206,6 @@ def deletewishListproduct():
             return 'Problem deleting item from order'
     return redirect(url_for('main.addProductToWishList'))
 
-
 @bp.route('/houseToHome/proceedtocheckout', methods=['POST', 'GET'])
 def proceedtocheckout():
     form = ProceedToCheckoutForm()
@@ -234,15 +221,14 @@ def proceedtocheckout():
             order.postCode = form.postCode.data
 
             try:
-                db.session.commit()
                 del session['order_id']
                 flash(
                     'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
                 return redirect(url_for('main.index'))
             except:
                 return 'There was an issue completing your order'
+<<<<<<< HEAD
     return render_template('checkout.html', form=form)
-
 
 # _______________________________________METHODS for addition and deletion at the same time from cart and wishlist page__________________________________________
 # Referred to as "Add Product To WishList FROM CART" by the user
@@ -309,7 +295,6 @@ def addProductToWishListFromCart():
             return redirect(url_for('main.addProductToWishList'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
-
 
 # Referred to as "Add Product To WishList FROM CART" by the user
 @bp.route('/houseToHome/addProductToCartFromWishList', methods=['POST', 'GET'])
