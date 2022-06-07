@@ -1,3 +1,4 @@
+{% import "bootstrap/wtf.html" as wtf %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -311,7 +312,7 @@
                                     <div class="btn-cart-totals">
                                         <a href="{{ url_for('main.deleteorder') }}" class="update round-black-btn"
                                             title="EMPTY CART" style="margin-right:6px;">EMPTY CART</a>
-                                        <a href="#id03" class="checkout round-black-btn" title="Go to checkOut"
+                                        <a href="{{ url_for('main.proceedtocheckout')}}" class="checkout round-black-btn" title="Go to checkOut"
                                             onclick="document.getElementById('id03').style.display='block'"
                                             style="width:auto; margin-right:6px;">Proceed to Checkout
                                         </a>
@@ -329,9 +330,23 @@
         </div>
 
         <!--Login Modal-->
-        <div id="id03" class="modal">
+        <!-- <div id="id03" class="modal">
+            <div class="align-self-center container">
 
-            <form class="align-self-center modal-content animate" style="border: 1px solid black;border-radius: 5px;"
+                <label for="uname" style="font-weight: 400; margin: 0px; color: #D35400"><b>PAYMENT CHECKOUT
+                        FORM</b></label>
+                <br>
+                <br>
+
+                {{wtf.quick_form(form)}}
+
+            </div>
+            <div class="align-self-center container modalFotter"
+                    style="background-color:#FAD7A0; border-top: 1px solid black; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                    <button type="button" onclick="document.getElementById('id03').style.display='none'"
+                        class="cancelbtn">PROCEED TO FINAL PAYMENT TRANSACTION</button>
+                </div> -->
+            <!-- <form class="align-self-center modal-content animate" style="border: 1px solid black;border-radius: 5px;"
                 action="/action_page.php" method="post">
 
                 <div class="imgcontainer">
@@ -378,8 +393,8 @@
                     <button type="button" onclick="document.getElementById('id03').style.display='none'"
                         class="cancelbtn">PROCEED TO FINAL PAYMENT TRANSACTION</button>
                 </div>
-            </form>
-        </div>
+            </form> -->
+        <!-- </div> -->
         <!--End of Login Modal-->
 
     </main>

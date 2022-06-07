@@ -73,6 +73,7 @@ def commonproducts():
 
 @bp.route('/houseToHome/placeOrder', methods=['POST', 'GET'])
 def placeOrder():
+    form = ProceedToCheckoutForm()
     product_id = request.values.get('product_id')
 
     # retrieve order if there is one
@@ -126,7 +127,7 @@ def placeOrder():
             flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
 
-    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges)
+    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges, form=form)
 
 
 # Delete specific basket items
@@ -234,11 +235,11 @@ def proceedtocheckout():
             order.postCode = form.postCode.data
 
             try:
-                db.session.commit()
                 del session['order_id']
                 flash(
                     'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
                 return redirect(url_for('main.index'))
             except:
                 return 'There was an issue completing your order'
-    return render_template('checkout.html', form=form)  # !____________________
+         
+    return render_template('checkOut.html', form=form)  # !____________________
