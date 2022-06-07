@@ -24,7 +24,7 @@
 
     <!-- Contains the heading, navigation and banner image -->
     <header>
-        <nav class="navbar navbar-light fixed-top navbar-expand-lg"
+        <nav class="navbar navbar-light navbar-expand-lg"
             style="background-color: #FAF0DD; border-bottom: 1px solid black; padding:0px;">
             <div class="container" style="padding: 6px;">
 
@@ -172,6 +172,15 @@
             </div>
         </nav>
 
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-primary m-0 p-0" role="alert" style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
+                    {% for message in messages %}
+                    <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
 
         <!--Jumbotron for Hero Section -->
         <div class="jumbotron jumbotron-fluid card card-image">

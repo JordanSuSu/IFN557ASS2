@@ -11,9 +11,7 @@ import logging
 bp = Blueprint('main', __name__, template_folder='templates')
 
 # todo: 8. make login form work in modal if possible
-# todo: 12. make send to wishlist button work from cart page
 # todo: 14. COUNT NOT INCREASING
-# todo: 13. ADD FLASHES to notify user product has been added
 # todo: 10. delete extra folders in project as of sir ..........comment properly and add details
 # todo: 11. Make final test and prepare vedio
 
@@ -25,6 +23,8 @@ bp = Blueprint('main', __name__, template_folder='templates')
 #! 5. delete products from wishlist
 #! 6. add products to cart and wishlist
 #! 9. check houseToHome Database content
+# todo: 12. make send to wishlist button work from cart page
+# todo: 13. ADD FLASHES to notify user product has been added
 
 
 @bp.route('/houseToHome')
@@ -117,6 +117,7 @@ def placeOrder():
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
+            flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
         else:
             product.shoppingCartcount = product.singleCount + 1
@@ -189,11 +190,13 @@ def addProductToWishList():
                 db.session.commit()
             except:
                 return 'There was an issue adding the item to your basket'
+            flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
         else:
             product.wishListCount = product.singleCount + 1
             requestByUser.products.append(product)
             db.session.commit()
+            flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
@@ -209,6 +212,7 @@ def deletewishListproduct():
         try:
             requestByUser.products.remove(product_to_delete)
             db.session.commit()
+            flash('PRODUCT DELETED SUCCESSFULLY FROM WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
         except:
             return 'Problem deleting item from order'
