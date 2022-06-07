@@ -176,15 +176,19 @@
         </nav>
 
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="alert alert-primary m-0 p-0" role="alert" style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
-                    {% for message in messages %}
-                    <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
+        {% if messages %}
+        <div class="alert alert-primary m-0 p-0" role="alert"
+            style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
+            {% for message in messages %}
+            <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
         {% endwith %}
+    </header>
 
+    <!-- Contains the main content of the website, divided into sections -->
+    <main>
         <!--Jumbotron for Hero Section -->
         <div class="jumbotron jumbotron-fluid card card-image">
             <div class="row justify-content-center mt-5 pb-4">
@@ -199,11 +203,6 @@
             </div>
         </div>
         <!-- Jumbotron for Hero Section END -->
-    </header>
-
-    <!-- Contains the main content of the website, divided into sections -->
-    <main>
-
         <!--Shop by category cards SECTION - 1  -->
         <div class="containerCartSection">
             <div class="cart-wrap">
@@ -252,7 +251,7 @@
                                                 </form>
                                                 <!-- _________________ -->
 
-                                                <form action="{{ url_for('main.addProductToWishList') }}">
+                                                <form action="{{ url_for('main.addProductToWishListFromCart') }}">
                                                     <input type="hidden" id="product_id" name="product_id"
                                                         value="{{ product.unique_product_id }}">
                                                     <input class="add-to-cart" type="submit" value="ADD TO WISHLIST">
@@ -266,7 +265,7 @@
                                             </td>
                                             <td>
                                                 <div class="product-content">
-                                                    {{product.singleCount}}
+                                                    {{product.shoppingCartcount}}
                                                 </div>
                                             </td>
                                         </tr>
@@ -346,7 +345,9 @@
                     <br>
                     <br>
 
-                    <label for="uname" style="font-weight: 200; margin: 0px;"><b>BUYER FULL NAME</b></label>
+                    {wtf.quick_form(form)}}
+
+                    <!-- <label for="uname" style="font-weight: 200; margin: 0px;"><b>BUYER FULL NAME</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" required type="text"
                         placeholder="Enter Username" name="uname" required=""
                         style="background-color: #FAF0DD; border-radius: 5px;color: black;">
@@ -369,7 +370,7 @@
 
                     <label for="psw" style="font-weight: 200; margin: 0px;"><b>CONTACT DETAILS</b></label>
                     <input type="password" placeholder="Enter phone number"
-                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required>
+                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required> -->
 
                 </div>
 

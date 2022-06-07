@@ -216,7 +216,7 @@ def dbseed():
                                  category='BathRoom',
                                  price=26.00)
     product_bathroom_3 = Product(unique_product_id=303,
-                                 title='SIDE NIGHT STAND',
+                                 title='SET OF SEVEN TOWELS',
                                  description='Set of 7 in vibrant colors',
                                  image='body_Towel.jpeg',
                                  dimension='Large',
@@ -291,20 +291,11 @@ def dbseed():
                                 material='Thick Cotton Jute Texture',
                                 category='BedRoom',
                                 price=100.40)
-    # product_bedroom_5 = Product(unique_product_id=405,
-    #                             title='SIDE NIGHT STAND',
-    #                             description='''Single drawer, durable, wood, dark finish''',
-    #                             image='night_stand.jpeg',
-    #                             dimension='(L,B,H)- 41 * 21 * 51 Centimeters',
-    #                             material='Teak Wood',
-    #                             category='BedRoom',
-    #                             price=240.40)
     try:
         db.session.add(product_bedroom_1)
         db.session.add(product_bedroom_2)
         db.session.add(product_bedroom_3)
         db.session.add(product_bedroom_4)
-        # db.session.add(product_bedroom_5)
         db.session.commit()
     except:
         return 'There was an issue adding the bedroom_products in dbseed function'

@@ -103,7 +103,7 @@ def placeOrder():
         for product in order.products:
             #totalprice = totalprice + tour.price
             total_product_price = total_product_price + (product.price *
-                                                         product.singleCount)
+                                                         product.shoppingCartcount)
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -241,4 +241,152 @@ def proceedtocheckout():
                 return redirect(url_for('main.index'))
             except:
                 return 'There was an issue completing your order'
-    return render_template('checkout.html', form=form)  # !____________________
+    return render_template('checkout.html', form=form)
+
+
+# _______________________________________METHODS for addition and deletion at the same time from cart and wishlist page__________________________________________
+# Referred to as "Add Product To WishList FROM CART" by the user
+@bp.route('/houseToHome/addProductToWishListFromCart', methods=['POST', 'GET'])
+def addProductToWishListFromCart():
+    product_id = request.values.get('product_id')
+
+    # retrieve order if there is one
+    if 'wishListorder_id' in session.keys():
+        requestByUser = WishList.query.get(session['wishListorder_id'])
+        # order will be None if wishListorder_id stale
+    else:
+        # there is no order
+        requestByUser = None
+
+    # create new request if needed
+    if requestByUser is None:
+        requestByUser = WishList(
+            item_add_status=False, individual_product_count=0)
+        try:
+            db.session.add(requestByUser)
+            db.session.commit()
+            session['wishListorder_id'] = requestByUser.wishList_id
+        except:
+            print('failed at add product to wishlist')
+            requestByUser = None
+
+    # are we adding an item?
+    if product_id is not None and requestByUser is not None:
+        product = Product.query.get(product_id)
+        if product not in requestByUser.products:
+            try:
+                requestByUser.products.append(product)
+                if 'order_id' in session:
+                    order = ShoppingCart.query.get_or_404(session['order_id'])
+                    product_to_delete = Product.query.get(product_id)
+                    try:
+                        order.products.remove(product_to_delete)
+                        db.session.commit()
+                        flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
+                        return redirect(url_for('main.placeOrder'))
+                    except:
+                        return 'Problem deleting item from order'
+            except:
+                return 'There was an issue adding the item to your basket'
+
+            flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
+            return redirect(url_for('main.addProductToWishList'))
+        else:
+            product.wishListCount = product.singleCount + 1
+            requestByUser.products.append(product)
+            if 'order_id' in session:
+                order = ShoppingCart.query.get_or_404(session['order_id'])
+                product_to_delete = Product.query.get(product_id)
+                try:
+                    order.products.remove(product_to_delete)
+                    db.session.commit()
+                    flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
+                    return redirect(url_for('main.placeOrder'))
+                except:
+                    return 'Problem deleting item from order'
+            db.session.commit()
+            flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
+            return redirect(url_for('main.addProductToWishList'))
+
+    return render_template('wishListIndex.html', requestByUser=requestByUser)
+
+
+# Referred to as "Add Product To WishList FROM CART" by the user
+@bp.route('/houseToHome/addProductToCartFromWishList', methods=['POST', 'GET'])
+def addProductToCartFromWishList():
+    product_id = request.values.get('product_id')
+
+    # retrieve order if there is one
+    if 'order_id' in session.keys():
+        order = ShoppingCart.query.get(session['order_id'])
+       # order will be None if order_id stale
+    else:
+       # there is no order
+        order = None
+
+    # create new order if needed
+    if order is None:
+        order = ShoppingCart(order_place_status=False, cart_net_total_price=0,
+                             shipping_charges=0, cart_total_product_price=0)
+        try:
+            db.session.add(order)
+            db.session.commit()
+            session['order_id'] = order.cart_id
+        except:
+            print('failed at creating a new order')
+            order = None
+
+    # calcultate totalprice
+    total_product_price = 0
+    net_total_price = 0
+    shipping_charges = 0
+    if order is not None:
+        for product in order.products:
+            #totalprice = totalprice + tour.price
+            total_product_price = total_product_price + (product.price *
+                                                         product.shoppingCart)
+            shipping_charges = product.shippingCost
+
+    net_total_price = total_product_price + shipping_charges
+
+    # are we adding an item?
+    if product_id is not None and order is not None:
+        product = Product.query.get(product_id)
+        if product not in order.products:
+            try:
+                order.products.append(product)
+                if 'wishListorder_id' in session:
+                    requestByUser = WishList.query.get_or_404(
+                        session['wishListorder_id'])
+                    product_to_delete = Product.query.get(product_id)
+                    try:
+                        requestByUser.products.remove(product_to_delete)
+                        db.session.commit()
+                        flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+                        return redirect(url_for('main.addProductToWishList'))
+                    except:
+                        return 'Problem deleting item from order'
+                db.session.commit()
+            except:
+                return 'There was an issue adding the item to your basket'
+            flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+            return redirect(url_for('main.placeOrder'))
+        else:
+            product.shoppingCartcount = product.singleCount + 1
+            order.products.append(product)
+            if 'wishListorder_id' in session:
+                requestByUser = WishList.query.get_or_404(
+                    session['wishListorder_id'])
+                product_to_delete = Product.query.get(product_id)
+                try:
+                    requestByUser.products.remove(product_to_delete)
+                    db.session.commit()
+                    flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+                    return redirect(url_for('main.addProductToWishList'))
+                except:
+                    return 'Problem deleting item from order'
+            db.session.commit()
+            flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+            return redirect(url_for('main.placeOrder'))
+
+    return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges)

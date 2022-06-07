@@ -173,14 +173,21 @@
         </nav>
 
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="alert alert-primary m-0 p-0" role="alert" style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
-                    {% for message in messages %}
-                    <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
+        {% if messages %}
+        <div class="alert alert-primary m-0 p-0" role="alert"
+            style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
+            {% for message in messages %}
+            <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
         {% endwith %}
+
+    </header>
+
+    <!-- Contains the main content of the website, divided into sections -->
+    <main>
+
 
         <!--Jumbotron for Hero Section -->
         <div class="jumbotron jumbotron-fluid card card-image">
@@ -196,10 +203,6 @@
             </div>
         </div>
         <!-- Jumbotron for Hero Section END -->
-    </header>
-
-    <!-- Contains the main content of the website, divided into sections -->
-    <main>
 
         <!--Shop by category cards SECTION - 1  -->
         <div class="containerCartSection">
@@ -244,7 +247,7 @@
                                         </form>
                                         <!-- _________________ -->
 
-                                        <form action="{{ url_for('main.placeOrder') }}">
+                                        <form action="{{ url_for('main.addProductToCartFromWishList') }}">
                                             <input type="hidden" id="product_id" name="product_id"
                                                 value="{{ product.unique_product_id }}">
                                             <input class="add-to-cart" type="submit" value="ADD TO CART">
