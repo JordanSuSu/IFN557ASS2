@@ -311,7 +311,7 @@
                                     <div class="btn-cart-totals">
                                         <a href="{{ url_for('main.deleteorder') }}" class="update round-black-btn"
                                             title="EMPTY CART" style="margin-right:6px;">EMPTY CART</a>
-                                        <a href="{{ url_for('main.proceedtocheckout')}}" class="checkout round-black-btn" title="Go to checkOut"
+                                        <a href="#" class="checkout round-black-btn" title="Go to checkOut"
                                             onclick="document.getElementById('id03').style.display='block'"
                                             style="width:auto; margin-right:6px;">Proceed to Checkout
                                         </a>
@@ -327,77 +327,6 @@
                 </div>
             </div>
         </div>
-
-        <!--Login Modal-->
-        <!-- <div id="id03" class="modal">
-            <div class="align-self-center container">
-
-                <label for="uname" style="font-weight: 400; margin: 0px; color: #D35400"><b>PAYMENT CHECKOUT
-                        FORM</b></label>
-                <br>
-                <br>
-
-                {{wtf.quick_form(form)}}
-
-            </div>
-            <div class="align-self-center container modalFotter"
-                    style="background-color:#FAD7A0; border-top: 1px solid black; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                    <button type="button" onclick="document.getElementById('id03').style.display='none'"
-                        class="cancelbtn">PROCEED TO FINAL PAYMENT TRANSACTION</button>
-                </div> -->
-            <!-- <form class="align-self-center modal-content animate" style="border: 1px solid black;border-radius: 5px;"
-                action="/action_page.php" method="post">
-
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id03').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-                </div>
-
-                <div class="align-self-center container">
-
-                    <label for="uname" style="font-weight: 400; margin: 0px; color: #D35400"><b>PAYMENT CHECKOUT
-                            FORM</b></label>
-                    <br>
-                    <br>
-
-                    {wtf.quick_form(form)}}
-
-                    <!-- <label for="uname" style="font-weight: 200; margin: 0px;"><b>BUYER FULL NAME</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required type="text"
-                        placeholder="Enter Username" name="uname" required=""
-                        style="background-color: #FAF0DD; border-radius: 5px;color: black;">
-
-                    <label for="psw" style="font-weight: 200; margin: 0px;"><b>SHIPPING HOME ADDRESS DETAILS</b></label>
-                    <input type="password" placeholder="Enter home address"
-                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required>
-
-                    <label for="psw" style="font-weight: 200; margin: 0px;"><b>CITY</b></label>
-                    <input type="password" placeholder="Enter City"
-                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required>
-
-                    <label for="psw" style="font-weight: 200; margin: 0px;"><b>STATE</b></label>
-                    <input type="password" placeholder="Enter state"
-                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required>
-
-                    <label for="psw" style="font-weight: 200; margin: 0px;"><b>POSTCODE</b></label>
-                    <input type="password" placeholder="Enter postcode number"
-                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required>
-
-                    <label for="psw" style="font-weight: 200; margin: 0px;"><b>CONTACT DETAILS</b></label>
-                    <input type="password" placeholder="Enter phone number"
-                        style="background-color: #FAF0DD;border-radius: 5px;color: black;" name="psw" required> -->
-
-                </div>
-
-                <div class="align-self-center container modalFotter"
-                    style="background-color:#FAD7A0; border-top: 1px solid black; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                    <button type="button" onclick="document.getElementById('id03').style.display='none'"
-                        class="cancelbtn">PROCEED TO FINAL PAYMENT TRANSACTION</button>
-                </div>
-            </form> -->
-        <!-- </div> -->
-        <!--End of Login Modal-->
-
     </main>
 
 
