@@ -237,10 +237,11 @@ def proceedtocheckout():
             order.state = form.state.data
             order.postCode = form.postCode.data
             try:
+                db.session.commit()
                 del session['order_id']
                 flash(
                     'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
-                return redirect(url_for('main.index'))
+                return redirect(url_for('main.placeOrder'))
             except:
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)
