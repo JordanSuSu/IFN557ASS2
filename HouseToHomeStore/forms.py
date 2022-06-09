@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import SubmitField, StringField
 from wtforms.validators import InputRequired, email
-
 # form used in cart
 
 
@@ -10,7 +9,7 @@ class ProceedToCheckoutForm(FlaskForm):
         "Your Full Name ", validators=[InputRequired()])
     shippingHomeAddressDetails = StringField(
         "Your Home Address", validators=[InputRequired()])
-    city = StringField("Your City ", validators=[InputRequired(), email()])
+    city = StringField("Your City ", validators=[InputRequired()])
     state = StringField("Your State ", validators=[InputRequired()])
     postCode = StringField("Your Area PostCode ", validators=[InputRequired()])
     contactDetails = StringField(

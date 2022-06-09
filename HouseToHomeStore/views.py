@@ -137,6 +137,7 @@ def deletecartproduct():
     if 'order_id' in session:
         order = ShoppingCart.query.get_or_404(session['order_id'])
         product_to_delete = Product.query.get(delete_cart_product_id)
+        
         try:
             order.products.remove(product_to_delete)
             db.session.commit()
@@ -228,7 +229,6 @@ def proceedtocheckout():
     form = ProceedToCheckoutForm()
     if 'order_id' in session:
         order = ShoppingCart.query.get_or_404(session['order_id'])
-
         if form.validate_on_submit():
             order.order_place_status = True
             order.buyerFullName = form.buyerFullName.data
@@ -236,7 +236,6 @@ def proceedtocheckout():
             order.city = form.city.data
             order.state = form.state.data
             order.postCode = form.postCode.data
-
             try:
                 del session['order_id']
                 flash(
@@ -245,6 +244,26 @@ def proceedtocheckout():
             except:
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)
+    # form = ProceedToCheckoutForm()
+    # if 'order_id' in session:
+    #     order = ShoppingCart.query.get_or_404(session['order_id'])
+
+    #     if form.validate_on_submit():
+    #         order.order_place_status = True
+    #         order.buyerFullName = form.buyerFullName.data
+    #         order.shippingHomeAddressDetails = form.shippingHomeAddressDetails.data
+    #         order.city = form.city.data
+    #         order.state = form.state.data
+    #         order.postCode = form.postCode.data
+
+    #         try:
+    #             del session['order_id']
+    #             flash(
+    #                 'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
+    #             return redirect(url_for('main.index'))
+    #         except:
+    #             return 'There was an issue completing your order'
+    # return render_template('checkout.html', form=form)
 
 # _______________________________________METHODS for addition and deletion at the same time from cart and wishlist page__________________________________________
 # Referred to as "Add Product To WishList FROM CART" by the user

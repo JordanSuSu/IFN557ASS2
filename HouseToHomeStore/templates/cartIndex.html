@@ -311,8 +311,7 @@
                                     <div class="btn-cart-totals">
                                         <a href="{{ url_for('main.deleteorder') }}" class="update round-black-btn"
                                             title="EMPTY CART" style="margin-right:6px;">EMPTY CART</a>
-                                        <a href="#" class="checkout round-black-btn" title="Go to checkOut"
-                                            onclick="document.getElementById('id03').style.display='block'"
+                                        <a href="{{ url_for('main.proceedtocheckout')}}" class="checkout round-black-btn" title="Go to checkOut"
                                             style="width:auto; margin-right:6px;">Proceed to Checkout
                                         </a>
                                     </div>
