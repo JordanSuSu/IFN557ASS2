@@ -105,6 +105,22 @@ footer {
     font-weight: bold;
 }
 
+.checkoutForm .btn {
+    background-color: #D35400;
+    font-family: 'Courier New', sans-serif;
+    color: white;
+    border: 2px solid #D35400;
+    font-size: large;
+}
+
+.checkoutForm .btn:hover {
+    background-color: #116021;
+    border: 2px solid #116021;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
 .home-newsletter {
     padding: 40px 0;
     background: #FAD7A0;

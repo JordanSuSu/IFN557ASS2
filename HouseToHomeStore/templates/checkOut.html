@@ -2,31 +2,39 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block main %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="alert alert-primary m-0 p-0" role="alert"
-            style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
-            {% for message in messages %}
-            <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% endwith %}       
-    <section>  
-        <div class="container">
-            <div class="row">
-                <div class = "col-12">
-                    <h1>Checkout</h1>
-                    <p>
-                        Thank you for your interest. Please provide your details so that one of our awesome tour agents can contact you to finalise details and take payment. Thank you! 
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class = "col-6">
-                    {{wtf.quick_form(form)}}
-                </div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert alert-primary m-0 p-0" role="alert"
+    style="background-color: #D35400; border-color: 1px solid black; text-align: center;">
+    {% for message in messages %}
+    <p class="text-centre" style="color: white; font-weight: bold;">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+<section style="background-color: #FAF0DD; margin-right: 0px; margin-left: 0px; border-top: 2px solid black;">
+    <div class="container">
+        <div class="row" style="margin-bottom: 15px;">
+            <div class="col-12" style="background-color: #D35400; border: 1px solid black">
+                <h1 class="justify-content-center" style="text-align: center; font-weight:800; color: white">Checkout
+                    Form</h1>
+                <p class="justify-content-center" style="text-align: center; color: white">
+                    THANK YOU FOR YOUR INTEREST. PLEASE PROVIDE DEATILS SO THAT WE CAN SHIP YOUR ORDERS ACCORDINGLY!!
+                </p>
             </div>
         </div>
-    </section>
+        <div class="justify-content-center row">
+            <div class="col-6 checkoutForm" style="padding: 15px; border: 1px solid #D35400">
+                {{wtf.quick_form(form)}}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ShopLine -->
+<div class="text-center"
+    style="background-color: #D35400; border-top: black 2px solid; padding-top: 6px; padding-bottom: 6px;">
+    <h10 style="background-color: #D35400; padding:2px; color: White">I hope you are enjoying shopping with us!!</h10>
+    <h6 style="font-size:17px; font-weight:600; background-color:#FAD7A0; padding:2px; color:black">DON'T WAIT
+        SHOP AND MAKE THE PAYMENT</h6>
+</div>
 {% endblock %}

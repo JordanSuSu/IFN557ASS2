@@ -14,4 +14,4 @@ class ProceedToCheckoutForm(FlaskForm):
     postCode = StringField("Your Area PostCode ", validators=[InputRequired()])
     contactDetails = StringField(
         "Your Contact Details ", validators=[InputRequired()])
-    submit = SubmitField("Proceed to Final Payment Transaction ")
+    submit = SubmitField("SUBMIT HERE")

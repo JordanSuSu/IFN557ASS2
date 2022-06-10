@@ -99,11 +99,12 @@ def placeOrder():
     total_product_price = 0
     net_total_price = 0
     shipping_charges = 0
+    #shoppingcartCount = 0
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price = total_product_price + (product.price *
-                                                         product.shoppingCartcount)
+            total_product_price = product.shoppingCartcount + (product.price *
+                                                               product.shoppingCartcount)
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -120,7 +121,7 @@ def placeOrder():
             flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
         else:
-            product.shoppingCartcount = product.singleCount + 1
+            product.shoppingCartcount = product.shoppingCartcount + 1
             order.products.append(product)
             db.session.commit()
             flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
@@ -137,7 +138,7 @@ def deletecartproduct():
     if 'order_id' in session:
         order = ShoppingCart.query.get_or_404(session['order_id'])
         product_to_delete = Product.query.get(delete_cart_product_id)
-        
+
         try:
             order.products.remove(product_to_delete)
             db.session.commit()
@@ -197,7 +198,7 @@ def addProductToWishList():
             flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
         else:
-            product.wishListCount = product.singleCount + 1
+            product.wishListCount = product.wishListCount + 1
             requestByUser.products.append(product)
             db.session.commit()
             flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
@@ -240,34 +241,11 @@ def proceedtocheckout():
                 db.session.commit()
                 del session['order_id']
                 flash(
-                    'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
+                    'THANK YOU FOR FILLING DETAILS. YOUR ORDER WILL BE DELIVERED AS PER THE INFORMATION PROVIDED...')
                 return redirect(url_for('main.placeOrder'))
             except:
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)
-    # form = ProceedToCheckoutForm()
-    # if 'order_id' in session:
-    #     order = ShoppingCart.query.get_or_404(session['order_id'])
-
-    #     if form.validate_on_submit():
-    #         order.order_place_status = True
-    #         order.buyerFullName = form.buyerFullName.data
-    #         order.shippingHomeAddressDetails = form.shippingHomeAddressDetails.data
-    #         order.city = form.city.data
-    #         order.state = form.state.data
-    #         order.postCode = form.postCode.data
-
-    #         try:
-    #             del session['order_id']
-    #             flash(
-    #                 'Thank you! One of for shopping with us. Your order is ready. Please make the final payment transaction...')
-    #             return redirect(url_for('main.index'))
-    #         except:
-    #             return 'There was an issue completing your order'
-    # return render_template('checkout.html', form=form)
-
-# _______________________________________METHODS for addition and deletion at the same time from cart and wishlist page__________________________________________
-# Referred to as "Add Product To WishList FROM CART" by the user
 
 
 @bp.route('/houseToHome/addProductToWishListFromCart', methods=['POST', 'GET'])
@@ -316,7 +294,7 @@ def addProductToWishListFromCart():
             flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
         else:
-            product.wishListCount = product.singleCount + 1
+            product.wishListCount = product.wishListCount + 1
             requestByUser.products.append(product)
             if 'order_id' in session:
                 order = ShoppingCart.query.get_or_404(session['order_id'])
@@ -368,8 +346,8 @@ def addProductToCartFromWishList():
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price = total_product_price + (product.price *
-                                                         product.shoppingCart)
+            total_product_price = product.shoppingCart + (product.price *
+                                                          product.shoppingCart)
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -397,7 +375,7 @@ def addProductToCartFromWishList():
             flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
         else:
-            product.shoppingCartcount = product.singleCount + 1
+            product.shoppingCartcount = product.wishListCount + 1
             order.products.append(product)
             if 'wishListorder_id' in session:
                 requestByUser = WishList.query.get_or_404(
