@@ -141,6 +141,7 @@ def deletecartproduct():
 
         try:
             order.products.remove(product_to_delete)
+            product_to_delete.shoppingCartcount = 1
             db.session.commit()
             flash('PRODUCT REMOVED SUCCESSFULLY FROM SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
@@ -217,6 +218,7 @@ def deletewishListproduct():
         product_to_delete = Product.query.get(wishlist_item_id)
         try:
             requestByUser.products.remove(product_to_delete)
+            product_to_delete.wishListCount = 1
             db.session.commit()
             flash('PRODUCT DELETED SUCCESSFULLY FROM WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
