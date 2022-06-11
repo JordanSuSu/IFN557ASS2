@@ -103,8 +103,7 @@ def placeOrder():
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price = product.shoppingCartcount + (product.price *
-                                                               product.shoppingCartcount)
+            total_product_price +=  product.price * product.shoppingCartcount
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -277,6 +276,8 @@ def addProductToWishListFromCart():
     # are we adding an item?
     if product_id is not None and requestByUser is not None:
         product = Product.query.get(product_id)
+        product.wishListCount = product.shoppingCartcount
+        product.shoppingCartcount = 1
         if product not in requestByUser.products:
             try:
                 requestByUser.products.append(product)
@@ -296,7 +297,7 @@ def addProductToWishListFromCart():
             flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
             return redirect(url_for('main.addProductToWishList'))
         else:
-            product.wishListCount = product.wishListCount + 1
+            # product.wishListCount = product.wishListCount + 1
             requestByUser.products.append(product)
             if 'order_id' in session:
                 order = ShoppingCart.query.get_or_404(session['order_id'])
@@ -348,8 +349,7 @@ def addProductToCartFromWishList():
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price = product.shoppingCart + (product.price *
-                                                          product.shoppingCart)
+            total_product_price +=  product.price * product.shoppingCartcount
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -357,6 +357,8 @@ def addProductToCartFromWishList():
     # are we adding an item?
     if product_id is not None and order is not None:
         product = Product.query.get(product_id)
+        product.shoppingCartcount = product.wishListCount
+        product.wishListCount = 1
         if product not in order.products:
             try:
                 order.products.append(product)
@@ -377,7 +379,7 @@ def addProductToCartFromWishList():
             flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
             return redirect(url_for('main.placeOrder'))
         else:
-            product.shoppingCartcount = product.wishListCount + 1
+            # product.shoppingCartcount = product.wishListCount + 1
             order.products.append(product)
             if 'wishListorder_id' in session:
                 requestByUser = WishList.query.get_or_404(
