@@ -9,22 +9,6 @@ import logging
 
 bp = Blueprint('main', __name__, template_folder='templates')
 
-# todo: 8. make login form work in modal if possible
-# todo: 14. COUNT NOT INCREASING
-# todo: 10. delete extra folders in project as of sir ..........comment properly and add details
-# todo: 11. Make final test and prepare vedio
-
-#! COMPLETED TASKS:
-#! 1. displayed routes for products page
-#! 2. load products from data base to the 6 different products page
-#! 4. delete allllll the products from cart
-#! 4. displayed routes for products page
-#! 5. delete products from wishlist
-#! 6. add products to cart and wishlist
-#! 9. check houseToHome Database content
-# todo: 12. make send to wishlist button work from cart page
-# todo: 13. ADD FLASHES to notify user product has been added
-
 
 @bp.route('/houseToHome')
 def index():
@@ -85,6 +69,9 @@ def placeOrder():
 
     # create new order if needed
     if order is None:
+        product_all = Product.query.all()
+        for product_item in product_all:
+            product_item.shoppingCartcount = 1
         order = ShoppingCart(order_place_status=False, cart_net_total_price=0,
                              shipping_charges=0, cart_total_product_price=0)
         try:
@@ -181,6 +168,9 @@ def addProductToWishList():
 
     # create new request if needed
     if requestByUser is None:
+        product_all = Product.query.all()
+        for product_item in product_all:
+            product_item.wishListCount = 1
         requestByUser = WishList(
             item_add_status=False, individual_product_count=0)
         try:
