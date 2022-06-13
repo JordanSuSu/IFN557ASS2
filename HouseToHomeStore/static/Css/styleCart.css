@@ -1,5 +1,5 @@
 .nav-item {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     font-weight: 500;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .dropdown-item {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     background-color: #FAF0DD;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .nav-item:hover {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     border-bottom: 2px solid #D35400;
     font-weight: 800;
 }
@@ -71,20 +71,20 @@ footer {
 }
 
 .content-for-footer p {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
 }
 
 .text-center .p-3 {
     background-color: #D35400;
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     color: white;
     font-weight: bold;
     border-top: 1px solid black;
 }
 
 .backgroundImageContent {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
     font-size: larger;
     font-weight: 500;
@@ -92,7 +92,7 @@ footer {
 
 .btn {
     background-color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
 }
 
@@ -102,7 +102,7 @@ footer {
 }
 
 .tagLineToShop .single h6 {
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     font-size: 22px;
     color: black;
     text-transform: uppercase;
@@ -112,13 +112,13 @@ footer {
 h6 {
     position: relative;
     margin-bottom: 8px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 h10 {
     position: relative;
     margin-top: 8px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .jumbotron {
@@ -177,7 +177,7 @@ h10 {
     color: black;
     font-size: 15px;
     font-weight: 400;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .table-cart tr td {
@@ -220,7 +220,7 @@ h10 {
     padding: 8px 8px 8px 12px;
     line-height: 24px;
     width: 50%;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     background-color: #FAD7A0;
 }
 
@@ -230,7 +230,7 @@ h10 {
     padding: 8px;
     line-height: 24px;
     width: 50%;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     background-color: #FAD7A0;
 }
 
@@ -241,7 +241,7 @@ h10 {
     margin-left: 20px;
     color: black;
     font-size: 17px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .table-cart tr td .quanlity {
@@ -252,7 +252,7 @@ h10 {
     font-size: 17px;
     font-weight: 600;
     color: #116021;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .display-flex {
@@ -286,7 +286,7 @@ h10 {
     border: solid 1px black;
     padding: 5px 15px;
     font-size: 15px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     margin-right: 0px
 }
 
@@ -303,7 +303,7 @@ input:focus {
     display: inline-block;
     transition: all 0.5s ease-in-out 0s;
     cursor: pointer;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     border: 1px solid #D35400;
 }
 
@@ -327,7 +327,7 @@ input:focus {
 }
 
 .cart-totals h3 {
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     font-size: 16px;
     color: black;
     letter-spacing: 1px;
@@ -346,7 +346,7 @@ input:focus {
     width: 50%;
     padding: 3px 0;
     vertical-align: middle;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
 }
 
@@ -357,25 +357,25 @@ input:focus {
 .cart-totals table tr td.subtotal {
     font-size: 20px;
     color: black;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .cart-totals table tr td.free-shipping {
     font-size: 14px;
     color: black;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .cart-totals table tr.total-row td {
     padding-top: 25px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .cart-totals table tr td.price-total {
     font-size: 16px;
     font-weight: 600;
     color: #116021;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .btn-cart-totals {
@@ -390,7 +390,7 @@ input:focus {
 
 /******************************LOGIN***************************/
 body {
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 /* Full-width input fields */
@@ -428,7 +428,7 @@ input[type=password] {
     display: inline-block;
     background: #D35400;
     color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     padding: 10px;
     margin: 5px;
     font-size: .90rem;
@@ -451,7 +451,7 @@ input[type=password] {
     display: inline-block;
     background: #D35400;
     color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     padding: 10px;
     margin: 5px;
     font-size: .90rem;
@@ -570,7 +570,7 @@ span.psw {
 }
 
 ::placeholder {
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     font-size: small;
 }
 
@@ -589,7 +589,7 @@ span.psw {
     background: #D35400;
     border: #D35400;
     color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     padding: 10px;
     margin: 5px;
     font-size: .90rem;

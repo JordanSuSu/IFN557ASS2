@@ -1,5 +1,5 @@
 .nav-item {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     font-weight: 500;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .dropdown-item {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     background-color: #FAF0DD;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .nav-item:hover {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     border-bottom: 2px solid #D35400;
     font-weight: 800;
 }
@@ -71,20 +71,20 @@ footer {
 }
 
 .content-for-footer p {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
 }
 
 .text-center .p-3 {
     background-color: #D35400;
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     color: white;
     font-weight: bold;
     border-top: 1px solid black;
 }
 
 .backgroundImageContent {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
     font-size: larger;
     font-weight: 500;
@@ -92,7 +92,7 @@ footer {
 
 .btn {
     background-color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     color: black;
 }
 
@@ -105,7 +105,7 @@ footer {
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto+Condensed:400,400i,700,700i');
 
 .tagLineToShop .single h6 {
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     font-size: 22px;
     color: black;
     text-transform: uppercase;
@@ -115,13 +115,13 @@ footer {
 h6 {
     position: relative;
     margin-bottom: 8px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 h10 {
     position: relative;
     margin-top: 8px;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 .jumbotron {
@@ -180,7 +180,7 @@ h10 {
 }
 
 .product-grid4 {
-    font-family: "Courier New", sans-serif;
+    font-family: 'europa', sans-serif;
     text-align: center;
     border-radius: 5px;
     overflow: hidden;
@@ -208,7 +208,7 @@ h10 {
     margin-top: 0;
     margin-bottom: 5px;
     padding: 0;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     background-color: #FAD7A0;
 }
 
@@ -219,7 +219,7 @@ h10 {
     margin-top: 0;
     margin-bottom: 3px;
     padding: 0;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     background-color: #FAF0DD;
     border: 0.5px solid grey;
     border-radius: 5px;
@@ -234,7 +234,7 @@ h10 {
     margin-bottom: 3px;
     padding: 0;
     background-color: #FAF0DD;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     border: 0.5px solid grey;
     border-radius: 5px;
 }
@@ -248,7 +248,7 @@ h10 {
     margin-bottom: 3px;
     padding: 0;
     background-color: #FAF0DD;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     border: 0.5px solid grey;
     border-radius: 5px;
 }
@@ -268,7 +268,7 @@ h10 {
     background: #D35400;
     border: #D35400;
     color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     padding: 10px;
     margin: 5px;
     font-size: .90rem;
@@ -307,7 +307,7 @@ h10 {
 
 /******************************LOGIN***************************/
 body {
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
 }
 
 /* Full-width input fields */
@@ -344,7 +344,7 @@ input[type=password] {
     display: inline-block;
     background: #D35400;
     color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     padding: 10px;
     margin: 5px;
     font-size: .90rem;
@@ -367,7 +367,7 @@ input[type=password] {
     display: inline-block;
     background: #D35400;
     color: white;
-    font-family: 'Courier New', sans-serif;
+    font-family: 'europa', sans-serif;
     padding: 10px;
     margin: 5px;
     font-size: .90rem;

@@ -51,8 +51,9 @@ def commonproducts():
     return render_template('commonOnesIndex.html', commonP=commonP)
 
 # _______________________________________ SHOPPING CART METHODS ____________________________________________
-# Referred to as "Cart" to the user
 
+
+# Referred to as "Cart" to the user
 
 @bp.route('/houseToHome/placeOrder', methods=['POST', 'GET'])
 def placeOrder():
@@ -90,7 +91,7 @@ def placeOrder():
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price +=  product.price * product.shoppingCartcount
+            total_product_price += product.price * product.shoppingCartcount
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -110,7 +111,8 @@ def placeOrder():
             product.shoppingCartcount = product.shoppingCartcount + 1
             order.products.append(product)
             db.session.commit()
-            flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+            flash(
+                'PRODUCT WAS ALREADY IN SHOPPING CART, THE COUNT HAS BEEN SUCCESSFULLY INCREASED!!!')
             return redirect(url_for('main.placeOrder'))
 
     return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges, form=form)
@@ -135,8 +137,8 @@ def deletecartproduct():
             return 'Problem deleting item from order'
     return redirect(url_for('main.placeOrder'))
 
-# Scrap basket
 
+# Scrap basket
 
 @bp.route('/houseToHome/emptycart')
 def deleteorder():
@@ -151,8 +153,9 @@ def deleteorder():
     return redirect(url_for('main.placeOrder'))
 
 # _______________________________________ WISHLIST METHODS __________________________________________
-# Referred to as "Add Product To WishList" by the user
 
+
+# Referred to as "Add Product To WishList" by the user
 
 @bp.route('/houseToHome/addProductToWishList', methods=['POST', 'GET'])
 def addProductToWishList():
@@ -196,13 +199,14 @@ def addProductToWishList():
             product.wishListCount = product.wishListCount + 1
             requestByUser.products.append(product)
             db.session.commit()
-            flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
+            flash(
+                'PRODUCT WAS ALREADY IN WISHING LIST, THE COUNT HAS BEEN SUCCESSFULLY INCREASED!!!')
             return redirect(url_for('main.addProductToWishList'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
 
-# Delete specific WishList items
 
+# Delete specific WishList items
 
 @bp.route('/houseToHome/deletewishListproduct', methods=['POST'])
 def deletewishListproduct():
@@ -220,6 +224,8 @@ def deletewishListproduct():
             return 'Problem deleting item from order'
     return redirect(url_for('main.addProductToWishList'))
 
+
+# _______________________________________ PROCEED TO CHECKOUT FORM METHOD __________________________________________
 
 @bp.route('/houseToHome/proceedtocheckout', methods=['POST', 'GET'])
 def proceedtocheckout():
@@ -242,6 +248,9 @@ def proceedtocheckout():
             except:
                 return 'There was an issue completing your order'
     return render_template('checkout.html', form=form)
+
+
+# _______________________________________ ADD PRODUCT TO CART FROM WISHLIST METHOD __________________________________________
 
 
 @bp.route('/houseToHome/addProductToWishListFromCart', methods=['POST', 'GET'])
@@ -283,7 +292,7 @@ def addProductToWishListFromCart():
                         order.products.remove(product_to_delete)
                         db.session.commit()
                         flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
-                        return redirect(url_for('main.placeOrder'))
+                        return redirect(url_for('main.addProductToWishList'))
                     except:
                         return 'Problem deleting item from order'
             except:
@@ -301,17 +310,20 @@ def addProductToWishListFromCart():
                 try:
                     order.products.remove(product_to_delete)
                     db.session.commit()
-                    flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
-                    return redirect(url_for('main.placeOrder'))
+                    flash(
+                        'PRODUCT WAS ALREADY IN WISHINGLIST, THE COUNT HAS BEEN SUCCESSFULLY INCREASED!!!')
+                    return redirect(url_for('main.addProductToWishList'))
                 except:
                     return 'Problem deleting item from order'
             db.session.commit()
-            flash('PRODUCT ADDED SUCCESSFULLY TO WISHING LIST!!')
+            flash(
+                'PRODUCT WAS ALREADY IN WISHINGLIST, THE COUNT HAS BEEN SUCCESSFULLY INCREASED!!!')
             return redirect(url_for('main.addProductToWishList'))
 
     return render_template('wishListIndex.html', requestByUser=requestByUser)
 
-# Referred to as "Add Product To WishList FROM CART" by the user
+
+# _______________________________________ ADD PRODUCT FROM WISHLIST TO SHOPPING CART __________________________________________
 
 
 @bp.route('/houseToHome/addProductToCartFromWishList', methods=['POST', 'GET'])
@@ -345,7 +357,7 @@ def addProductToCartFromWishList():
     if order is not None:
         for product in order.products:
             #totalprice = totalprice + tour.price
-            total_product_price +=  product.price * product.shoppingCartcount
+            total_product_price += product.price * product.shoppingCartcount
             shipping_charges = product.shippingCost
 
     net_total_price = total_product_price + shipping_charges
@@ -366,7 +378,7 @@ def addProductToCartFromWishList():
                         requestByUser.products.remove(product_to_delete)
                         db.session.commit()
                         flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
-                        return redirect(url_for('main.addProductToWishList'))
+                        return redirect(url_for('main.placeOrder'))
                     except:
                         return 'Problem deleting item from order'
                 db.session.commit()
@@ -385,12 +397,14 @@ def addProductToCartFromWishList():
                 try:
                     requestByUser.products.remove(product_to_delete)
                     db.session.commit()
-                    flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
-                    return redirect(url_for('main.addProductToWishList'))
+                    flash(
+                        'PRODUCT WAS ALREADY IN SHOPPING CART, THE COUNT HAS BEEN SUCCESSFULLY INCREASED!!!')
+                    return redirect(url_for('main.placeOrder'))
                 except:
                     return 'Problem deleting item from order'
             db.session.commit()
-            flash('PRODUCT ADDED SUCCESSFULLY TO SHOPPING CART!!')
+            flash(
+                'PRODUCT WAS ALREADY IN SHOPPING CART, THE COUNT HAS BEEN SUCCESSFULLY INCREASED!!!')
             return redirect(url_for('main.placeOrder'))
 
     return render_template('cartIndex.html', order=order, total_product_price=total_product_price, net_total_price=net_total_price, shipping_charges=shipping_charges)
