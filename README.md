@@ -1,5 +1,6 @@
-# IFN557ASS2
-Assessment of IFN557 Rapid Web Development
-Co-work with Vanshika
+# Simple Online Store Website
+Assessment of IFN557 Rapid Web Development built by Flask. Co-work with Vanshika.
 
-That is a simple online store built wiht Flask
+
+## Demo Video
+https://www.youtube.com/watch?v=nwoKibNRzTU
